@@ -1,0 +1,26 @@
+<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+<section class="container">
+<section data-ng-controller="LandingpagesController" data-ng-init="find()">
+    
+    <div class="row">&nbsp;</div>
+    <div class="row">&nbsp;</div>
+
+    <div class="page-header">
+        <h1>Landingpages</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="landingpage in landingpages" data-ng-href="#!/admin/landingpages/{{landingpage._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="landingpage.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="landingpage.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="landingpage.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!landingpages.$resolved || landingpages.length">
+    	Nenhum item foi criado ainda, <a href="/#!/admin/landingpages/create">clique aqui para inserir.</a>
+    </div>
+</section>
+    </section>

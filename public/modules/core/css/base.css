@@ -1,0 +1,303 @@
+body  {background-color:#f3f5f2; margin:0px; font-family: 'Lato', sans-serif;  font-size: 13px; letter-spacing: -1px;}
+img   {border:0px}
+
+
+.logo{
+    color: #fff;
+    height:39px;
+    margin-left: 10px;
+    padding:17px 0px 0px 21px;
+    font-size: 22px;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif;"
+}
+
+.segblocomenu   {margin-top: 15px; margin-bottom: 15px;}
+
+.blocomenu      {background-color: #303639; border-radius: 60px; margin: 0 auto;}
+  
+.seloemail      {width:69px; height:63px; padding:22px 0px 0px 21px; float: right; background-color: #373d40;}  
+
+.topofertas
+{
+  font-family: 'Droid Sans';
+  letter-spacing: -0.5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-left: 2px;
+  font-size: 14px;
+  color: #3b3b3a;
+  /* border-bottom: 1px solid #ededed; */
+}
+
+a.menu {
+  font-family: 'Droid Sans', sans-serif;   font-size: 14px;
+  display:block;
+  letter-spacing: -0.3px;
+  text-align:center;
+  padding-top:0px;
+  color: #ebeef0;
+  text-decoration:none;
+  float:right;
+  padding: 23px 20px 23px 20px;
+
+}
+a.menu:hover {
+  color: #219acc;
+}
+
+
+
+
+/* FORM CADASTRO */
+
+.subscribe {
+  float:right;
+}
+
+.subscribe-pitch {
+  /* background: url("../img/email.png") 5px center no-repeat; */
+}
+.subscribe-pitch > h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.subscribe-pitch > p {
+  line-height: 22px;
+}
+
+.subscribe-form {
+  position: relative;
+  margin: 0px 0px 0px 0px;
+}
+
+.subscribe-input {
+  padding: 0px 0px 0px 16px;
+  width: 90%;
+  height: 63px;
+  font-family: 'Droid Sans', Tahoma, Verdana, sans-serif;
+  font-size: 16px;
+  background-color: #ededed;
+  background-clip: padding-box;
+  border: 1px solid;
+  border-color: #303639 #303639 #303639;
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(02, 0,2 02, 0.2), 1px 1px #f8f8f8;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px #f8f8f8;
+
+}
+.subscribe-input:focus {
+  outline: 0;
+  -webkit-transition: duration 3s;
+  -moz-transition: duration 3s;
+  -o-transition: duration 3s;
+  transition: duration 3s;
+  border-color: #303639;
+  background-color: #ededed;
+}
+
+.subscribe-submit {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: -1px;
+  padding-left: 15px;
+  height: 63px;
+  width: 116px;
+  background: #219acc;
+  border: 1px solid;
+  border-color: #219acc;
+  border-radius: 0 60px 60px 0; */
+  cursor: hand;
+ /*font: 0/0 serif;*/
+  text-shadow: none;
+ /* color: transparent;
+  background-image: -webkit-linear-gradient(top, #84f087, #4cd94a);
+  background-image: -moz-linear-gradient(top, #84f087, #4cd94a);
+  background-image: -o-linear-gradient(top, #84f087, #4cd94a);
+  background-image: linear-gradient(to bottom, #84f087, #4cd94a);
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.4); */
+}
+.subscribe-submit:active {
+  background: #1d89b6;
+ /* border-color: #f90 #f90 #f90 #f90;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3); */
+}
+.subscribe-submit:before {
+  font-family: 'Droid Sans', Tahoma, Verdana, sans-serif;
+  content: 'Cadastrar';
+  display: block;
+  color: #fff;
+  margin-top: 4px;
+  margin-left: 7px;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  width: 25px;
+  height: 19px;
+ /* background: url("images/tick.png"); */
+}
+
+.lt-ie9 .subscribe-input {
+  line-height: 33px;
+}
+
+/* FIM FORM CADASTRO */
+
+
+
+
+#topo2	{
+  width:100%;
+  margin:25px 0px 30px 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color:#ededed;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+}
+
+
+#topo3	{
+  width:100%;
+  margin:0px 0px 50px 0px;
+  padding-top:0px;
+  padding-bottom: 20px;
+  letter-spacing: -0.3px;
+
+}
+
+
+/* caixa de oferta */
+
+.thumb	{
+  display:inline-block;
+  vertical-align:top;
+  text-decoration:none;
+  position:relative;
+  color:#444;
+  margin:1px;
+  margin-right: 3px;
+  margin-bottom:8px;
+  text-align:left;
+}
+
+.thumb:hover, .thumb:focus  	{color:#0096d2;text-decoration:none}
+
+.thumb-img  {
+  display:block;
+  position:relative; 
+  background-color:#fff;
+  border-radius: 5px;
+  border:1px; 
+  border-color:#ededed;
+  border-style:solid;
+}
+
+
+.thumb-over {
+  position:absolute;
+  top:-1px;
+  bottom:1;
+  left:-1px;
+  right:-1px;
+  padding:.0em 0em;
+  color:white;
+  text-shadow:0 1px rgba(0,0,0,0.1);
+  /*background:rgba(204,204,204,0.95);*/
+  border:1px;
+  border-radius:5px;
+  border-color:#000;
+  /*border-color:#07eeee;*/
+  border-style:solid;
+  opacity:0;
+  -webkit-transition:opacity 0.3s;
+  -moz-transition:opacity 0.3s;
+  -o-transition:opacity 0.3s;
+  transition:opacity 0.3s;
+  -moz-box-shadow:    2px 2px 1px 2px #ccc;
+  -webkit-box-shadow: 0.5px 0.5px 0.5px 0.5px #ccc;
+  -box-shadow:        2px 2px 1px 2px #ccc;
+
+}
+
+.thumb:hover .thumb-over,.thumb:focus .thumb-over {opacity:1}
+.thumb-desc {line-height:2;font-size:.9375em}
+
+.minhadiv  {
+  background-color:#fff;
+  border-radius:3px;
+  border:1px; 
+  border-color:#ededed;
+  border-style:solid;
+}
+
+.selo {
+  width:59px;
+  height:46px;
+  margin-right:-7px;
+  margin-top:6px;
+  float:right;
+  background-image:url(../img/selo.png);
+  background-repeat:no-repeat;
+  text-align:center;
+  padding-top:6px;
+  padding-left:1px;
+  padding-bottom:0px;
+  font-size:18px;
+}
+
+
+
+.tt{
+  padding:5px 8px 0px 8px;
+  font-size:20px;
+}
+
+.tt2 {
+  padding:3px 8px 0px 8px;
+  font-size:26px;
+  letter-spacing:-0.5px;
+}
+
+.ttofertapp {
+  font-size:12px;
+  text-decoration:line-through;
+  color: #cc0000;
+}
+.ttbarra {
+  font-size:16px;
+}
+.percentual{
+  font-size:10px;
+}
+.contover{
+  height:137px;
+  border-top-color:#303639;
+  border-top-style:solid;
+  border-top-width:1px;
+  background-color:#303639;
+  float:left;
+  margin-top:55px;
+  color:#ccc;
+  text-shadow: none;
+}
+
+.contovertt{
+  padding:8px 8px 0px 8px;
+  letter-spacing:0.5px;
+  color: #fff;
+}
+
+.contoverdesc{
+  letter-spacing:0.5px;
+  padding:8px;
+  font-size:10px;
+}
+.contoverprice{
+  padding:2px 8px 0px 8px;
+  font-size:26px;
+  color: #fff;
+}
+/* fim da caixa de ofertas */
