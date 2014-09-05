@@ -6,26 +6,124 @@
     
 
 <section data-ng-controller="LandingpagesController" data-ng-init="findOne()">
+    
+    
     <div class="page-header">
-        <h1>Edit Landingpage</h1>
+        <h1>Editar {{landingpage.nome}}</h1>
     </div>
+    
+    
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
+    
+            
+            <div class="jumbotron" >
             <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="landingpage.name" id="name" class="form-control" placeholder="Name" required>
+                
+        
+                
+                
+                
+                <div class="row">
+                    <div class="col-xs-3">
+                     
+                        <div class="form-group">
+                            <label class="control-label" for="categoria">Categoria</label>
+                            <select class="form-control" name="categoria" data-ng-model="landingpage.categoria" id="categoria" required>
+                                <option value="roupas">Roupas</option>
+                                <option value="eletronicos">Eletr&ocirc;nicos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-1">&nbsp;</div>
+                    <div class="col-xs-8">
+                        
+                        <div class="form-group">
+                            <label class="control-label" for="nome">Nome</label>
+                            <input name="nome" type="text" class="form-control" data-ng-model="landingpage.nome" id="nome" placeholder="Nome" required>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                
+                
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="link">Link</label>
+                            <input name="link" type="text" class="form-control" data-ng-model="landingpage.link" id="link" placeholder="URL de acesso a oferta" required>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
+                
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                
+                        <div class="form-group">
+                          <label class="control-label" for="descricao">Descri&ccedil;&atilde;o</label>
+                            <textarea name="descricao" data-ng-model="landingpage.descricao" id="descricao" cols="30" rows="3" placeholder="Descri&ccedil;&atilde;o" class="form-control" required></textarea>
+                        </div>
+                    </div>
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
+                
+                <div class="row" style="background-color: #CCCCCC; padding-bottom:15px;">
+                    <div class="col-xs-4">
+                        <label class="control-label" for="descricao">Desconto</label>
+                        <div class="input-group">
+                            
+                            <span class="input-group-addon">%</span>
+                            <input name="precoDe" type="text" class="form-control" data-ng-model="landingpage.desconto" id="deconto" placeholder="Desconto" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <label class="control-label" for="descricao">Pre&ccedil;o</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">R$</span>
+                            <input name="precoDe" type="text" class="form-control" data-ng-model="landingpage.precoDe" id="precoDe" placeholder="Pre&ccedil;o sem desconto" required>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <label class="control-label" for="descricao">Pre&ccedil;o com desconto</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">R$</span>
+                            <input name="precoPara" type="text" class="form-control" data-ng-model="landingpage.precoPara" id="precoPara" placeholder="Pre&ccedil;o com desconto" required>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">&nbsp;</div>
+                
+                
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="Imagem">Imagem</label>
+                            <input type="file" nv-file-select="" uploader="uploader"/>
+        <!--                    <input type="file" data-ng-model="imagem" id="imagem" ng-file-select="onFileSelect($files)" accept="image/*">-->
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
             </fieldset>
-        </form>
+                
+            <div class="row">&nbsp;</div>
+                                    
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-lg">Atualizar Item</button>&nbsp;&nbsp;
+                <button type="button" data-ng-click="remove(landingpage);" class="btn btn-danger btn-lg">Remover Item</button>
+            </div>
+        
+            </div>
+            </form>
     </div>
 </section>
 </section>

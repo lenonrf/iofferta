@@ -5,6 +5,11 @@ module.exports = function(app) {
     var users = require('../../app/controllers/users');
 	var landingpages = require('../../app/controllers/landingpages');
 
+    
+    // Upload
+	app.route('/admin/landingpages/upload/:landingpageId')
+		.post(landingpages.upload);
+    
 	// Landingpages Routes
 	app.route('/admin/landingpages')
 		.get(landingpages.list)
@@ -18,3 +23,4 @@ module.exports = function(app) {
 	// Finish by binding the Landingpage middleware
 	app.param('landingpageId', landingpages.landingpageByID);
 };
+

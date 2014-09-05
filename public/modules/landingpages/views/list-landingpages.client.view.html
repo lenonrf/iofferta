@@ -1,4 +1,23 @@
 <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+
+
+<style type="text/css">
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Raleway: 200,400,600,800);
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+/* responsivo */
+@import url("modules/core/css/1280.css") (min-width: 780px);
+@import url("modules/core/css/1280.css") (min-width: 1020px);
+@import url("modules/core/css/1280.css") (min-width: 1270px);
+@import url("modules/core/css/1280.css") (min-width: 1430px);
+/* fim responsivo */
+
+@import url("modules/core/css/base.css");
+
+</style>
+
 <section class="container">
 <section data-ng-controller="LandingpagesController" data-ng-init="find()">
     
@@ -6,21 +25,41 @@
     <div class="row">&nbsp;</div>
 
     <div class="page-header">
-        <h1>Landingpages</h1>
+        <h1>Listar Items</h1>
     </div>
-    <div class="list-group">
-        <a data-ng-repeat="landingpage in landingpages" data-ng-href="#!/admin/landingpages/{{landingpage._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="landingpage.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="landingpage.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="landingpage.name"></h4>
-        </a>
+    
+  
+    
+    <div data-ng-repeat="landingpage in landingpages" style="float:left; padding: 5px 5px 0px 0px;">
+        
+        <div class="thumb-img" style="height:265px;">
+
+            <a data-ng-href="/#!/admin/landingpages/{{landingpage._id}}/edit"> 
+                <img src="https://s3-sa-east-1.amazonaws.com/produtodireto/popunder/imagens/s4.jpg"  class="imgprd" border="0" align="center" />
+
+                <div class="tt" style="height:55px;">                
+                    {{landingpage.nome}}
+                </div>   
+             </a>
+            
+            <div  class="tt"  data-ng-show="authentication.user._id == landingpage.user._id">
+                <a class="btn btn-primary" href="/#!/admin/landingpages/{{landingpage._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a class="btn btn-danger" data-ng-click="remove(landingpage);">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+        </div> 
+       
     </div>
+    
+    
+    
     <div class="alert alert-warning text-center" data-ng-hide="!landingpages.$resolved || landingpages.length">
     	Nenhum item foi criado ainda, <a href="/#!/admin/landingpages/create">clique aqui para inserir.</a>
     </div>
+
 </section>
-    </section>
+ 
+</section>

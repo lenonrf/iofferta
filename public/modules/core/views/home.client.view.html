@@ -12,22 +12,26 @@
 @import url("modules/core/css/1440.css") (min-width: 1430px);
 /* fim responsivo */
 
-@import url("base.css");
+@import url("modules/core/css/base.css");
 
 </style>
 
 <body>
 
-
+<section data-ng-controller="EmailsController">
 <div class="segblocomenu">
   <div class="blocomenu">
    
-      <div class="subscribe">
-	<form action="index.html" method="post" class="subscribe-form">
-	  <input type="email" name="email" class="subscribe-input" placeholder="Cadastre-se e receba uma oferta surpresa!" autofocus>
-	  <button type="submit" class="subscribe-submit"></button>
-	</form>
-      </div>
+      
+          <div class="subscribe">
+
+            <form class="subscribe-form" data-ng-submit="createEmailOnHome()" >
+              <input type="email" data-ng-model="email" id="email" name="email" class="{submitted:emailCreated} subscribe-input" placeholder="Cadastre-se e receba uma oferta surpresa!" autofocus required>
+              <button type="submit" class="subscribe-submit"></button>
+            </form>
+              
+          </div>
+        
       
       <div class="seloemail"><img src="modules/core/img/imail.png" /></div>
 
@@ -40,8 +44,15 @@
   </div>
 </div>
 
+<div class="segura">
+    <div ng-show="emailCreated" class="alert alert-success" role="alert">
+        <span style="font-size: 19px;">obrigado por se cadastrar, em breve enviaremos super ofertas para você!</span>
+    </div>
 
-
+<!--    <div ng-show="emailCreated" class="topofertas">obrigado por se cadastrar, em breve enviaremos super ofertas para você!</div></div>-->
+</section>
+    
+    
 <div class="segura"><div class="topofertas">As melhores ofertas da Internet</div></div>
 
 <div class="segura">
@@ -49,7 +60,7 @@
 
 <!--  Produto --> 
 <a href="#" class="thumb"> 
-
+    
 <div class="thumb-img"> 
 
   <img src="https://s3-sa-east-1.amazonaws.com/produtodireto/popunder/imagens/s4.jpg"  class="imgprd" border="0" align="center" />
@@ -97,9 +108,9 @@
     <div class="contover">
       <div class="contovertt">Smarthphone S4 Dual</div>
       <div class="contoverdesc">Internet WiFi, Tv, 2 chips, 2 Câmeras, Facebook, desbloqueado.</div>
-      <div class="contoverprice">
-	<span class="ttofertapp">R$ 999,90</span><span class="ttbarra"> |  R$</span> 149<span class="ttbarra">,90</span>
-     </div>                       
+        <div class="contoverprice">
+	       <span class="ttofertapp">R$ 999,90</span><span class="ttbarra"> |  R$</span> 149<span class="ttbarra">,90</span>
+        </div>                       
     </div>
   </div>  
 </div>

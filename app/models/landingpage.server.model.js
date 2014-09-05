@@ -38,7 +38,7 @@ var LandingpageSchema = new Schema({
       },
     imagem: {
         type: String,
-        required: true,
+        required: false,
         trim: true
       },
     link: {
@@ -47,11 +47,21 @@ var LandingpageSchema = new Schema({
         trim: true
       },
     
+    desconto: {
+        type: String,
+        required: true,
+        trim: true
+      },
+    
+    
+    
     
 	created: {
 		type: Date,
 		default: Date.now
 	},
+    
+    
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'

@@ -2,9 +2,9 @@
 
 module.exports = {
 	app: {
-		title: 'MEAN.JS',
-		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
-		keywords: 'mongodb, express, angularjs, node.js, mongoose, passport'
+		title: 'iOfferta',
+		description: 'Encontramos os melhores descontos!',
+		keywords: 'ioffertas'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
@@ -17,12 +17,17 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 			],
 			js: [
+                'public/lib/es5-shim/es5-shim.min.js',
+                'public/lib/es5-shim/es5-sham.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-animate/angular-animate.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+                'public/lib/angular-file-upload/angular-file-upload.js',
+                'public/lib/angular-sanitize/angular-sanitize.js',
+                'public/lib/ng-csv/build/ng-csv.js'
 			]
 		},
 		css: [

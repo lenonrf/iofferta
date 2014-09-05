@@ -1,3 +1,5 @@
+
+
 <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
 <section class="container">
 
@@ -10,90 +12,178 @@
     <div class="page-header">
         <h1>Novo Item</h1>
     </div>
-    <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create()" novalidate>
-            
-            
+               
             <div data-ng-show="error" class="text-danger">
 				<strong data-ng-bind="error"></strong>
 			</div>
-            
-            
-            <fieldset>                
-
-                <div class="form-group">
-                  <label class="control-label" for="categoria">Categoria</label>
-                  <div class="controls">
-                    <select class="form-control" name="categoria" data-ng-model="categoria" id="categoria" required>
-                        <option value="roupas">Roupas</option>
-                        <option value="eletronicos">Eletr&ocirc;nicos</option>
-                    </select>
-                  </div>
-                </div>
-                
-              <div class="form-group">
-                  <label class="control-label" for="nome">Nome</label>
-                  <div class="controls">
-                    <input name="nome" type="text" class="form-control" data-ng-model="nome" id="nome" placeholder="Nome" required>
-                  </div>
-
-                </div> 
-                
-                <div class="form-group">
-                  <label class="control-label" for="link">Link</label>
-                  <div class="controls">
-                    <input name="link" type="text" class="form-control" data-ng-model="link" id="link" placeholder="URL de acesso a oferta" required>
-                  </div>
-
-                </div> 
+    
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+        <div class="jumbotron" >
+        
+            <fieldset>     
                 
                 
-                <div class="form-group">
-                  <label class="control-label" for="descricao">Descri&ccedil;&atilde;o</label>
-                  <div class="controls">
-                    <textarea name="descricao" data-ng-model="descricao" id="descricao" cols="30" rows="5" placeholder="Descri&ccedil;&atilde;o" class="form-control" required></textarea>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="control-label" for="precoDe">Pre&ccedil;o de</label>
-                  <div class="controls">
-                      <div class="input-group">
-                        <span class="input-group-addon">R$</span>
-                        <input name="precoDe" type="text" class="form-control" data-ng-model="precoDe" id="precoDe" placeholder="Pre&ccedil;o sem desconto" required>
-                      </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="control-label" for="precoPara">Pre&ccedil;o para</label>
-                  <div class="controls">
-                      <div class="input-group">
-                        <span class="input-group-addon">R$</span>
-                        <input name="precoPara" type="text" class="form-control" data-ng-model="precoPara" id="precoPara" placeholder="Pre&ccedil;o com desconto" required>
+                
+                <div class="row">
+                    <div class="col-xs-3">
+                     
+                        <div class="form-group">
+                            <label class="control-label" for="categoria">Categoria</label>
+                            <select class="form-control" name="categoria" data-ng-model="categoria" id="categoria" required>
+                                <option value="roupas">Roupas</option>
+                                <option value="eletronicos">Eletr&ocirc;nicos</option>
+                            </select>
+                        </div>
                     </div>
-                  </div>
+                    <div class="col-xs-1">&nbsp;</div>
+                    <div class="col-xs-8">
+                        
+                        <div class="form-group">
+                            <label class="control-label" for="nome">Nome</label>
+                            <input name="nome" type="text" class="form-control" data-ng-model="nome" id="nome" placeholder="Nome" required>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                
+                
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="link">Link</label>
+                            <input name="link" type="text" class="form-control" data-ng-model="link" id="link" placeholder="URL de acesso a oferta" required>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                  <label class="control-label" for="Imagem">Imagem</label>
-                  <div class="controls">
-                    <input type="file" data-ng-model="imagem" id="imagem" ng-file-select="onFileSelect($files)" accept="image/*">
-                  </div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                
+                        <div class="form-group">
+                          <label class="control-label" for="descricao">Descri&ccedil;&atilde;o</label>
+                            <textarea name="descricao" data-ng-model="descricao" id="descricao" cols="30" rows="3" placeholder="Descri&ccedil;&atilde;o" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row" style="background-color: #CCCCCC; padding-bottom:15px;">
+                    <div class="col-xs-4">
+                        <label class="control-label" for="descricao">Desconto</label>
+                        <div class="input-group">
+                            
+                            <span class="input-group-addon">%</span>
+                            <input name="precoDe" type="text" class="form-control" data-ng-model="desconto" id="deconto" placeholder="Desconto" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <label class="control-label" for="descricao">Pre&ccedil;o</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">R$</span>
+                            <input name="precoDe" type="text" class="form-control" data-ng-model="precoDe" id="precoDe" placeholder="Pre&ccedil;o sem desconto" required>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <label class="control-label" for="descricao">Pre&ccedil;o com desconto</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">R$</span>
+                            <input name="precoPara" type="text" class="form-control" data-ng-model="precoPara" id="precoPara" placeholder="Pre&ccedil;o com desconto" required>
+
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">&nbsp;</div>
                 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-info">Criar</button>
-                </div>
-                    
                 
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="Imagem">Imagem</label>
+                            <input type="file" nv-file-select="" uploader="uploader"/>
+        <!--                    <input type="file" data-ng-model="imagem" id="imagem" ng-file-select="onFileSelect($files)" accept="image/*">-->
+                       <!-- 
+                         <div ng-show="uploader.queue.length !=0">
+                                <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="50%">Nome</th>
+                                        <th ng-show="uploader.isHTML5">Tamanho</th>
+                                        <th ng-show="uploader.isHTML5">Progress</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in uploader.queue">
+                                        <td>
+                                            <strong>{{ item.file.name }}</strong>
+                                            <!-- Image preview -->
+                                            <!--auto height-->
+                                            <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+                                            <!--auto width-->
+                                            <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                                            <!--fixed width and height -->
+                                            <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+<!--                                        </td>
+                                        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                        <td ng-show="uploader.isHTML5">
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td nowrap>
+                                            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+        
+                                            <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                                <span class="glyphicon glyphicon-ban-circle"></span> Cancelar
+                                            </button>
+        
+                                            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                                <span class="glyphicon glyphicon-trash"></span> Remover
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        </div>-->
+                        
+                        </div>
+                    </div>
+                </div>
+                
+      
+
             </fieldset>
         
-        </form>
+            
+            <div class="row">&nbsp;</div>
+                                    
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-lg">Criar novo Item</button>
+            </div>
+        
+            </div>
+            </form>
+        
+
+                
+                
+        
+        
     </div>
 </section>
     </section>

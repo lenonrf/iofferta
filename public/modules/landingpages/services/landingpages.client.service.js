@@ -3,7 +3,8 @@
 //Landingpages service used to communicate Landingpages REST endpoints
 angular.module('landingpages').factory('Landingpages', ['$resource',
 	function($resource) {
-		return $resource('admin/landingpages/:landingpageId', { landingpageId: '@_id'
+		return $resource('admin/landingpages/:landingpageId', { 
+            landingpageId: '@_id'
 		}, {
 			update: {
 				method: 'PUT'

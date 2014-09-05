@@ -1,0 +1,40 @@
+<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+<section class="container">
+
+<section data-ng-controller="EmailsController">
+    
+    <div class="row">&nbsp;</div>
+    <div class="row">&nbsp;</div>
+    <div class="page-header">
+        <h1>Novo Email</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+            <fieldset>
+                
+                <div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+                
+                <div class="form-group">
+                    <label class="control-label" for="name">Email</label>
+                    <div class="controls">
+                        <input type="email" data-ng-model="email" id="email" class="form-control" placeholder="Email" required>
+                    </div>
+                </div>
+                
+                <div class="row">&nbsp;</div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info">Criar</button>
+                </div>
+                    
+                
+                <div class="row">&nbsp;</div>
+                <div class="row">&nbsp;</div>
+				
+            </fieldset>
+        </form>
+    </div>
+</section>
+    </section>

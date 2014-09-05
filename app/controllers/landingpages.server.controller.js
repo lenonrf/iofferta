@@ -8,6 +8,17 @@ var mongoose = require('mongoose'),
 	Landingpage = mongoose.model('Landingpage'),
 	_ = require('lodash');
 
+
+
+
+exports.upload = function(file){
+    console.log('chegooou chegoou ta na hor da alegriaaa');
+};
+
+
+
+
+
 /**
  * Create a Landingpage
  */
@@ -56,7 +67,8 @@ exports.update = function(req, res) {
  * Delete an Landingpage
  */
 exports.delete = function(req, res) {
-	var landingpage = req.landingpage ;
+	
+    var landingpage = req.landingpage ;
 
 	landingpage.remove(function(err) {
 		if (err) {

@@ -8,7 +8,9 @@ var ApplicationConfiguration = function () {
         'ngAnimate',
         'ui.router',
         'ui.bootstrap',
-        'ui.utils'
+        'ui.utils',
+        'angularFileUpload',
+        'ngCsv'
       ];
     // Add a new vertical module
     var registerModule = function (moduleName, dependencies) {
