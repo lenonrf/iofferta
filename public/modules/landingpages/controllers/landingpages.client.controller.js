@@ -124,12 +124,6 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
         
         
         
-        
-        
-        
-        
-        
-        
         // -----------------------------------------------------------------
         
         
