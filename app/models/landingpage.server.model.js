@@ -38,7 +38,7 @@ var LandingpageSchema = new Schema({
       },
     imagem: {
         type: String,
-        required: false,
+        required: true,
         trim: true
       },
     link: {

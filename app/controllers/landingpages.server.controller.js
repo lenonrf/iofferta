@@ -11,11 +11,28 @@ var mongoose = require('mongoose'),
 
 exports.upload = function(req, res){
 
-    console.log('REQ', req);
-    
-    return res.status(200).send({
-	   message: 'EITCHA LELE !!!'
-    });
+	var serverPath = 'public/images/'+req.files.file.name;
+ 
+    require('fs').rename(
+		req.files.file.path,
+		serverPath,
+		
+		function(error) {
+	    
+	        if(error) {
+				res.send({
+	               error: 'Ah crap! Something bad happened'
+				});
+	        
+	        	return;
+	        }
+	 
+	        res.send({
+				fileName: req.files.file.originalFilename
+	        });
+		}
+    );
+
 };
 
 
@@ -26,6 +43,7 @@ exports.upload = function(req, res){
  * Create a Landingpage
  */
 exports.create = function(req, res) {
+
 	var landingpage = new Landingpage(req.body);
 	landingpage.user = req.user;
 

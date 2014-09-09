@@ -5,10 +5,13 @@ module.exports = function(app) {
     var users = require('../../app/controllers/users');
 	var landingpages = require('../../app/controllers/landingpages');
 
+	var multipart = require('connect-multiparty');
+	var multipartMiddleware = multipart();
+
     
     // Upload
 	app.route('/admin/landingpages/upload')
-		.post(landingpages.upload);
+		.post( multipartMiddleware, landingpages.upload);
     
 	// Landingpages Routes
 	app.route('/admin/landingpages')

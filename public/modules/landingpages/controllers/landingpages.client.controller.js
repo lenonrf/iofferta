@@ -1,8 +1,8 @@
 'use strict';
 
 // Landingpages controller
-angular.module('landingpages').controller('LandingpagesController', ['$scope', '$upload', '$stateParams', '$location', 'Authentication', 'Landingpages',
-	function($scope, $upload, $stateParams, $location, Authentication, Landingpages ) {
+angular.module('landingpages').controller('LandingpagesController', ['$scope', '$http', '$upload', '$stateParams', '$location', 'Authentication', 'Landingpages',
+	function($scope, $http, $upload, $stateParams, $location, Authentication, Landingpages ) {
 		
         $scope.authentication = Authentication;
         $scope.loadingImage = 0;
@@ -34,7 +34,7 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 			});
             
             
-            //console.log('this', this);
+            console.log('this', landingpage);
 
 			// Redirect after save
 			landingpage.$save(function(response) {
@@ -130,6 +130,27 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
         
         
         
+		$scope.uploadFile = function(files) {
+		    
+
+			var fileObj = files[0];
+
+			console.log('FILEs', fileObj);
+
+
+		    var fd = new FormData();
+		    //Take the first selected file
+		    fd.append("file", fileObj);
+
+		    $http.post('/admin/landingpages/upload', fd, {
+		        withCredentials: true,
+		        headers: {'Content-Type': undefined },
+		        transformRequest: angular.identity
+		    });//.success( ).error();
+
+		};
+
+
         
         
         // -----------------------------------------------------------------
@@ -155,7 +176,7 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
           
         }).success(function(data, status, headers, config) {
             
-
+			$scope.imagem = data.fileName;
             console.log(data);
         });
       };
