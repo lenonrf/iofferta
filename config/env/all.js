@@ -17,17 +17,17 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 			],
 			js: [
-                'public/lib/es5-shim/es5-shim.min.js',
-                'public/lib/es5-shim/es5-sham.min.js',
+				'public/lib/ng-file-upload/angular-file-upload-shim.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-animate/angular-animate.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-                'public/lib/angular-file-upload/angular-file-upload.js',
+                
                 'public/lib/angular-sanitize/angular-sanitize.js',
-                'public/lib/ng-csv/build/ng-csv.js'
+                'public/lib/ng-csv/build/ng-csv.js',
+                'public/lib/ng-file-upload/angular-file-upload.js'
 			]
 		},
 		css: [

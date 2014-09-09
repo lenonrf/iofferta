@@ -8,7 +8,10 @@ angular.module('landingpages').factory('Landingpages', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
-			}
+			},
+            upload :{
+                method: 'POST'
+            }
 		});
 	}
 ]);

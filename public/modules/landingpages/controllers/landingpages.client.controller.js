@@ -1,10 +1,11 @@
 'use strict';
 
 // Landingpages controller
-angular.module('landingpages').controller('LandingpagesController', ['$scope', 'FileUploader', '$stateParams', '$location', 'Authentication', 'Landingpages',
-	function($scope, FileUploader, $stateParams, $location, Authentication, Landingpages ) {
+angular.module('landingpages').controller('LandingpagesController', ['$scope', '$upload', '$stateParams', '$location', 'Authentication', 'Landingpages',
+	function($scope, $upload, $stateParams, $location, Authentication, Landingpages ) {
 		
         $scope.authentication = Authentication;
+        $scope.loadingImage = 0;
         
         
         if($scope.authentication.user === ''){
@@ -97,6 +98,7 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 
 		// Update existing Landingpage
 		$scope.update = function() {
+            
 			var landingpage = $scope.landingpage ;
 
 			landingpage.$update(function() {
@@ -124,59 +126,38 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
         
         
         
+        
+        
+        
+        
+        
+        
         // -----------------------------------------------------------------
         
         
-        var uploader = $scope.uploader = new FileUploader({
-            url: '/admin/landingpages/upload'
+        
+     $scope.onFileSelect = function($files) {
+          
+        var file = $files[0];
+
+        console.log('FILE', file);
+
+        $scope.upload = $upload.upload({
+            
+            url: '/admin/landingpages/upload',
+            method: 'POST',            
+            data: { myObj: $scope.landingpages },
+            file: file,
+          
+        }).progress(function(evt) {
+
+            $scope.loadingImage = parseInt(100.0 * evt.loaded / evt.total);
+          
+        }).success(function(data, status, headers, config) {
+            
+
+            console.log(data);
         });
-
-        // FILTERS
-
-        uploader.filters.push({
-            name: 'imageFilter',
-            fn: function(item /*{File|FileLikeObject}*/, options) {
-                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-            }
-        });
-
-        // CALLBACKS
-
-        uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
-            console.info('onWhenAddingFileFailed', item, filter, options);
-        };
-        uploader.onAfterAddingFile = function(fileItem) {
-            console.info('onAfterAddingFile', fileItem);
-        };
-        uploader.onAfterAddingAll = function(addedFileItems) {
-            console.info('onAfterAddingAll', addedFileItems);
-        };
-        uploader.onBeforeUploadItem = function(item) {
-            console.info('onBeforeUploadItem', item);
-        };
-        uploader.onProgressItem = function(fileItem, progress) {
-            console.info('onProgressItem', fileItem, progress);
-        };
-        uploader.onProgressAll = function(progress) {
-            console.info('onProgressAll', progress);
-        };
-        uploader.onSuccessItem = function(fileItem, response, status, headers) {
-            console.info('onSuccessItem', fileItem, response, status, headers);
-        };
-        uploader.onErrorItem = function(fileItem, response, status, headers) {
-            console.info('onErrorItem', fileItem, response, status, headers);
-        };
-        uploader.onCancelItem = function(fileItem, response, status, headers) {
-            console.info('onCancelItem', fileItem, response, status, headers);
-        };
-        uploader.onCompleteItem = function(fileItem, response, status, headers) {
-            console.info('onCompleteItem', fileItem, response, status, headers);
-        };
-        uploader.onCompleteAll = function() {
-            console.info('onCompleteAll');
-        };
-
-        //console.info('uploader', uploader);
-	}
+      };
+    }
 ]);

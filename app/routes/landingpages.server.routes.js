@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     
     // Upload
-	app.route('/admin/landingpages/upload/:landingpageId')
+	app.route('/admin/landingpages/upload')
 		.post(landingpages.upload);
     
 	// Landingpages Routes
@@ -17,6 +17,7 @@ module.exports = function(app) {
 
 	app.route('/admin/landingpages/:landingpageId')
 		.get(landingpages.read)
+        .post(landingpages.upload)
 		.put(users.requiresLogin, landingpages.hasAuthorization, landingpages.update)
 		.delete(users.requiresLogin, landingpages.hasAuthorization, landingpages.delete);
 

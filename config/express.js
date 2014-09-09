@@ -21,8 +21,13 @@ var express = require('express'),
 	path = require('path');
 
 module.exports = function(db) {
+	
 	// Initialize express app
 	var app = express();
+
+
+
+
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {

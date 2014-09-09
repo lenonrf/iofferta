@@ -9,10 +9,13 @@ var mongoose = require('mongoose'),
 	_ = require('lodash');
 
 
+exports.upload = function(req, res){
 
-
-exports.upload = function(file){
-    console.log('chegooou chegoou ta na hor da alegriaaa');
+    console.log('REQ', req);
+    
+    return res.status(200).send({
+	   message: 'EITCHA LELE !!!'
+    });
 };
 
 
