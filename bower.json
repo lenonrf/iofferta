@@ -13,6 +13,7 @@
     "angular-bootstrap": "~0.11.0",
     "angular-ui-utils": "~0.1.1",
     "angular-ui-router": "~0.2.10",
-    "ng-csv": "~0.2.3"
+    "ng-csv": "~0.2.3",
+    "ui-utils": "~0.1.1"
   }
 }

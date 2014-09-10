@@ -38,6 +38,39 @@ exports.upload = function(req, res){
 
 
 
+exports.deleteImagem = function(req, res){
+
+	console.log('service', req.image);
+
+	var serverPath = 'public/images/'+req.image;
+
+	console.log('serverPath', req.image);
+ 
+ /*
+    require('fs').rmdir(
+		serverPath,
+		
+		function(error) {
+	    
+	        if(error) {
+				res.send({
+	               error: 'Ah crap! Something bad happened'
+				});
+	        
+	        	return;
+	        }
+	 
+	        res.send({
+				fileName: req.files.file.originalFilename
+	        });
+		}
+    );*/
+
+};
+
+
+
+
 
 /**
  * Create a Landingpage
@@ -69,7 +102,8 @@ exports.read = function(req, res) {
  * Update a Landingpage
  */
 exports.update = function(req, res) {
-	var landingpage = req.landingpage ;
+	
+	var landingpage = req.landingpage;
 
 	landingpage = _.extend(landingpage , req.body);
 
@@ -126,6 +160,22 @@ exports.landingpageByID = function(req, res, next, id) { Landingpage.findById(id
 		next();
 	});
 };
+
+
+
+exports.landingpageByNovidade = function(req, res, next, novidade) { 
+
+	console.log('NOVIDADE', novidade);
+
+	Landingpage.find({'novidade': novidade}).populate('user', 'displayName').exec(function(err, landingpage) {
+		if (err) return next(err);
+		if (! landingpage) return next(new Error('Failed to load Landingpage - novidade field: ' + novidade));
+		req.landingpage = landingpage ;
+		next();
+	});
+};
+
+
 
 /**
  * Landingpage authorization middleware

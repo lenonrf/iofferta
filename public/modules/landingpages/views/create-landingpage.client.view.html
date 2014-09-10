@@ -13,9 +13,7 @@
         <h1>Novo Item</h1>
     </div>
                
-            <div data-ng-show="error" class="text-danger">
-				<strong data-ng-bind="error"></strong>
-			</div>
+           
     
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" enctype="multipart/form-data" novalidate>
@@ -23,7 +21,26 @@
         
             <fieldset>     
                 
-                
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div data-ng-show="error" class="text-danger">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-3">                     
+                        <div class="form-group">
+                            
+                            <input type="checkbox" ng-model="novidade" name="novidade" id="novidade"> <b>Novidades</b>
+                              
+                        </div>
+                    </div>
+                </div>
+
+
                 
                 <div class="row">
                     <div class="col-xs-3">
@@ -46,6 +63,8 @@
                     </div>
                    
                 </div>
+
+             
 
                 
                 
@@ -101,20 +120,43 @@
 
                 <div class="row">&nbsp;</div>
                 
-                
+
+                <div class="row">
+                 <div class="form-group">
+                        <div class="col-xs-1">
+                            <label class="control-label" for="Imagem">Imagem</label>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <label class="control-label" for="Imagem">Imagem</label>
+                    <div class="form-group">
 
-                              <input type="file" name="imagem" ng-file-select="onFileSelect($files)"  accept="image/*">
+                        <div class="col-xs-1" ng-show="showImage">
+                            <button ng-click="deleteFile()" type="button" class="btn btn-danger btn-xs">remover</button>
+                        </div>
+
+                        <div class="col-xs-11">        
+                  
+                            <input type="file" name="imagem" id ="imagemId" ng-file-select="onFileSelect($files)"  accept="image/*">
                         
                         </div>
                     </div>
 
                 </div>
 
+                <!-- Preview da imagem -->
+                <div class="row" ng-show="showImage">
+                    <div ng-if="imagem">
+
+                        <img ng-src="../../../images/{{imagem}}"  class="imgprd" border="0" align="center" />
+                    </div>
+                </div>
+
+
+                <div class="row">&nbsp;</div>
+
+                <!-- Progress Bar -->
                 <div class="row">
                     <progressbar class="progress-striped" value="loadingImage" type="info">{{loadingImage}}%</progressbar>
                 </div>

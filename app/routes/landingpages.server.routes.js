@@ -11,12 +11,16 @@ module.exports = function(app) {
     
     // Upload
 	app.route('/admin/landingpages/upload')
-		.post( multipartMiddleware, landingpages.upload);
+		.post( multipartMiddleware, landingpages.upload)
+		.delete( users.requiresLogin, multipartMiddleware, landingpages.deleteImagem);
     
 	// Landingpages Routes
 	app.route('/admin/landingpages')
 		.get(landingpages.list)
 		.post(users.requiresLogin, landingpages.create);
+
+	app.route('/admin/landingpages/:novidade')
+		.get(landingpages.read);
 
 	app.route('/admin/landingpages/:landingpageId')
 		.get(landingpages.read)
@@ -26,5 +30,7 @@ module.exports = function(app) {
 
 	// Finish by binding the Landingpage middleware
 	app.param('landingpageId', landingpages.landingpageByID);
+
+	app.param('novidade', landingpages.landingpageByNovidade);
 };
 

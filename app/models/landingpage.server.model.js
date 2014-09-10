@@ -52,6 +52,12 @@ var LandingpageSchema = new Schema({
         required: true,
         trim: true
       },
+
+      novidade: {
+        type: Boolean,
+        required: false,
+        trim: true
+      },
     
     
     
