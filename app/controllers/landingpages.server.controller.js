@@ -153,7 +153,9 @@ exports.list = function(req, res) { Landingpage.find().sort('-created').populate
 /**
  * Landingpage middleware
  */
-exports.landingpageByID = function(req, res, next, id) { Landingpage.findById(id).populate('user', 'displayName').exec(function(err, landingpage) {
+exports.landingpageByID = function(req, res, next, id) { 
+
+	Landingpage.findById(id).populate('user', 'displayName').exec(function(err, landingpage) {
 		if (err) return next(err);
 		if (! landingpage) return next(new Error('Failed to load Landingpage ' + id));
 		req.landingpage = landingpage ;
@@ -162,18 +164,6 @@ exports.landingpageByID = function(req, res, next, id) { Landingpage.findById(id
 };
 
 
-
-exports.landingpageByNovidade = function(req, res, next, novidade) { 
-
-	console.log('NOVIDADE', novidade);
-
-	Landingpage.find({'novidade': novidade}).populate('user', 'displayName').exec(function(err, landingpage) {
-		if (err) return next(err);
-		if (! landingpage) return next(new Error('Failed to load Landingpage - novidade field: ' + novidade));
-		req.landingpage = landingpage ;
-		next();
-	});
-};
 
 
 

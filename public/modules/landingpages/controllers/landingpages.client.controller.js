@@ -9,9 +9,38 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
         
         
         if($scope.authentication.user === ''){
-            $location.path('signin');
+
+            if($location.path() !== '/'){
+                $location.path('signin');    
+            }
+            
         }
         
+        $scope.selectCategoria = function(filtro){
+            
+            console.log('filtro', filtro);
+            console.log('$scope.landingpages', $scope.landingpages);
+
+            $scope.find();
+
+            var itemsFiltrados = [];  
+
+            for( var i=0; i<$scope.landingpages.length; i++){
+
+                console.log('$scope.landingpages.i.categoria', $scope.landingpages.i.categoria);
+                if($scope.landingpages.i.categoria === filtro){
+                    itemsFiltrados.push($scope.landingpages.i);
+                }
+            }
+
+            $scope.landingpages = itemsFiltrados;
+
+            $scope.filtro = filtro;
+            $location.path('/');
+
+            
+            console.log('$scope.filtro', $scope.landingpages);
+        };
         
     
        
@@ -19,6 +48,12 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 		// Create new Landingpage
 		$scope.create = function() {
 			
+
+            var novidadeArg = false;
+
+            if(this.novidade){
+                novidadeArg =true;
+            }
             
             // Create new Landingpage object
 			var landingpage = new Landingpages ({
@@ -31,16 +66,18 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 link: this.link,
                 imagem: this.imagem,
                 desconto: this.desconto,
-                novidade: this.novidade
+                novidade: novidadeArg
 			});
 
 
-            console.log('OBJ', landingpage);
+            // console.log('OBJ', landingpage);
 
 			// Redirect after save
 			landingpage.$save(function(response) {
                 
-				$location.path('admin/landingpages/' + response._id);
+				//$location.path('admin/landingpages/' + response._id);
+
+                $location.path('admin/landingpages');
 
 				// Clear form fields
 				$scope.nome = '';
@@ -107,7 +144,7 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 			var landingpage = $scope.landingpage ;
 
 			landingpage.$update(function() {
-				$location.path('admin/landingpages/' + landingpage._id);
+				$location.path('admin/landingpages');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -116,16 +153,12 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 		// Find a list of Landingpages
 		$scope.find = function() {
 			$scope.landingpages = Landingpages.query();
+
+            //console.log('ITENS', $scope.landingpages);
 		};
 
 
-        
-        $scope.findByNovidade = function() {
-            $scope.landingpage = Landingpages.get({ 
-                novidade: true
-            });
-        };
-
+    
 
 
 		// Find existing Landingpage
@@ -137,6 +170,22 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 				landingpageId: $stateParams.landingpageId
 			});
 		};
+
+
+
+                // Find existing Landingpage
+        $scope.findByCategoria = function() {
+
+            $scope.showImage = true;
+
+            $scope.landingpage = Landingpages.get({ 
+                categoria: $stateParams.categoria
+            });
+        };
+
+
+
+
         
         
         
@@ -182,8 +231,14 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 $scope.imagem = data.fileName;
                 $scope.showImage = true;
 
-                if($scope.landingpage.imagem){
-                    $scope.landingpage.imagem = $scope.imagem;
+                console.log($location.path());
+
+                var location = $location.path();
+
+                if(location !== '/admin/landingpages/create'){
+                    if($scope.landingpage.imagem){
+                        $scope.landingpage.imagem = $scope.imagem;
+                    }
                 }
 
             }); 

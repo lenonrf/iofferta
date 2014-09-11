@@ -34,7 +34,7 @@
                     <div class="col-xs-3">                     
                         <div class="form-group">
                             
-                            <input type="checkbox" ng-model="novidade" name="novidade" id="novidade"> <b>Novidades</b>
+                            <input type="checkbox" value="false" ng-model="novidade" name="novidade" id="novidade"> <b>Novidades</b>
                               
                         </div>
                     </div>
@@ -48,6 +48,7 @@
                         <div class="form-group">
                             <label class="control-label" for="categoria">Categoria</label>
                             <select class="form-control" name="categoria" data-ng-model="categoria" id="categoria" required>
+                                <option value="top">Top Ofertas</option>
                                 <option value="roupas">Roupas</option>
                                 <option value="eletronicos">Eletr&ocirc;nicos</option>
                             </select>
