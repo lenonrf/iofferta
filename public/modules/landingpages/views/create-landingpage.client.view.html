@@ -10,7 +10,7 @@
     
     
     <div class="page-header">
-        <h1>Novo Item</h1>
+        <h1>Nova Oferta</h1>
     </div>
                
            
@@ -34,7 +34,9 @@
                     <div class="col-xs-3">                     
                         <div class="form-group">
                             
-                            <input type="checkbox" value="false" ng-model="novidade" name="novidade" id="novidade"> <b>Novidades</b>
+                            <input type="checkbox" value="false" ng-model="novidade" name="novidade" id="novidade"> <b>Novidades</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="checkbox" value="false" ng-model="top" name="top" id="top"> <b>Top Oferta</b>
                               
                         </div>
                     </div>
@@ -48,7 +50,6 @@
                         <div class="form-group">
                             <label class="control-label" for="categoria">Categoria</label>
                             <select class="form-control" name="categoria" data-ng-model="categoria" id="categoria" required>
-                                <option value="top">Top Ofertas</option>
                                 <option value="roupas">Roupas</option>
                                 <option value="eletronicos">Eletr&ocirc;nicos</option>
                             </select>
@@ -64,10 +65,7 @@
                     </div>
                    
                 </div>
-
-             
-
-                
+ 
                 
 
                 <div class="row">
@@ -170,7 +168,7 @@
             <div class="row">&nbsp;</div>
                                     
             <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg">Criar novo Item</button>
+                <button type="submit" class="btn btn-success btn-lg">Cadastrar Oferta</button>
             </div>
         
             </div>

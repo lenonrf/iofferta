@@ -58,6 +58,12 @@ var LandingpageSchema = new Schema({
         required: false,
         trim: true
       },
+
+      top: {
+        type: Boolean,
+        required: false,
+        trim: true
+      },
     
     
     

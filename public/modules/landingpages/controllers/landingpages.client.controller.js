@@ -54,6 +54,12 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
             if(this.novidade){
                 novidadeArg =true;
             }
+
+            var topArg = false;
+
+            if(this.top){
+                topArg =true;
+            }
             
             // Create new Landingpage object
 			var landingpage = new Landingpages ({
@@ -66,7 +72,8 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 link: this.link,
                 imagem: this.imagem,
                 desconto: this.desconto,
-                novidade: novidadeArg
+                novidade: novidadeArg,
+                top: topArg
 			});
 
 
@@ -89,9 +96,13 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 $scope.imagem = '';
                 $scope.desconto = '';
                 $scope.novidade = '';
+                $scope.top = '';
 
                 
 			}, function(errorResponse) {
+
+                console.log('ERROR', errorResponse);
+
 				$scope.error = errorResponse.data.message;
 			});
 		};

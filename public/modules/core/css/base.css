@@ -1,5 +1,5 @@
 body  {
-    background-color:#f3f5f2; line-height:1.23; margin:0; font-family: 'Lato', sans-serif;  font-size: 13px; letter-spacing: -1px;}
+    background-color:#f3f5f2; line-height:1.23; margin:0; font-family: 'Lato', sans-serif;  font-size: 13px; letter-spacing: -0.5px;}
 img   {border:0}
 
 
@@ -7,8 +7,6 @@ img   {border:0}
 {
     border:1px solid #f00;
 }
-
-
 
 
 .logo{
