@@ -2,8 +2,22 @@
 .blocomenu  {max-width: 1320px; height: 63px;}
 .segura     {max-width: 1250px;  margin-left:6%;}
 .subscribe  {width: 40%;}
-.thumb, .thumb-img, .thumb-over, .minhadiv {height: 273px; width: 202px;}
 .imgprd {width:200px;   border-radius: 5px;}
 .selo   {margin-bottom:14px;}
 .contovertt {font-size:18px;}
-.contover { margin-top: 55px; height:150px; width: 200px;}
+.contover { margin-top: 67px; height:150px; width: 200px;}
+
+
+.thumb, .thumb-img, .thumb-over, .minhadiv {
+	height: 285px; 
+	width: 202px;
+}
+
+
+.thumb-img img {
+    width: 200px;
+    height: 190px;
+}
+
+
+

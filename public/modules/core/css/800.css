@@ -9,3 +9,7 @@
 .contover { margin-top: 55px; height:128px; width: 239px;}
 
 
+.thumb-img img {
+    width: 239px;
+    height: 197px;
+}
