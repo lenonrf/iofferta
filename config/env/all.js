@@ -6,7 +6,7 @@ module.exports = {
 		description: 'Encontramos os melhores descontos!',
 		keywords: 'ioffertas'
 	},
-	port: process.env.PORT || 80,
+	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',

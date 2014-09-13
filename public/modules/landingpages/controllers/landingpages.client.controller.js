@@ -38,8 +38,6 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                             
                             var str = data[i].precoPara.split(',');
 
-                             console.log('str', str);
-
                             data[i].precoParaInteiro = str[0];
                             data[i].precoParaCentavos = ','+str[1];
 
@@ -92,8 +90,6 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                         if(data[i].precoPara.indexOf(',') > -1){
                             
                             var str = data[i].precoPara.split(',');
-
-                             console.log('str', str);
 
                             data[i].precoParaInteiro = str[0];
                             data[i].precoParaCentavos = ','+str[1];
@@ -173,8 +169,6 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 
 			}, function(errorResponse) {
 
-                console.log('ERROR', errorResponse);
-
 				$scope.error = errorResponse.data.message;
 			});
 		};
@@ -219,8 +213,6 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 
 		// Update existing Landingpage
 		$scope.update = function() {
-
-            console.log('IMAGEM', $scope.imagem);
 
             $scope.landingpage.imagem = $scope.imagem;
             
@@ -334,8 +326,6 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 
                 $scope.imagem = data.fileName;
                 $scope.showImage = true;
-
-                console.log($location.path());
 
                 var location = $location.path();
 
