@@ -69,7 +69,7 @@ angular.module('emails').controller('EmailsController', ['$scope', '$stateParams
 				var ddChars = dd.split('');
 				 
 				// CONCAT THE STRINGS IN YYYY-MM-DD FORMAT
-				var dateString = (ddChars[1]?dd:"0"+ddChars[0]) + '/' +  (mmChars[1]?mm:"0"+mmChars[0]) + '/' +  yyyy
+				var dateString = (ddChars[1]?dd:"0"+ddChars[0]) + '/' +  (mmChars[1]?mm:"0"+mmChars[0]) + '/' +  yyyy;
 
                 dados[i] = { 
                 	a : $scope.emails[i].email,
