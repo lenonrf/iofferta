@@ -20,10 +20,7 @@ angular.module('emails').controller('EmailsController', ['$scope', '$stateParams
           $scope.bigTotalItems = 175;
           $scope.bigCurrentPage = 1;
 
-		
-        
-        
-        
+	
         // Create new Email
 		$scope.create = function() {
 			
@@ -56,9 +53,28 @@ angular.module('emails').controller('EmailsController', ['$scope', '$stateParams
             console.log($scope.emails);
             //return $scope.emails;
             
-            var dados = [];            
+            var dados = [];    
+
+
             for(var i in $scope.emails){
-                dados[i] = { a : $scope.emails[i].email};
+
+            	var date = new Date($scope.emails[i].created);
+                // GET YYYY, MM AND DD FROM THE DATE OBJECT
+				var yyyy = date.getFullYear().toString();
+				var mm = (date.getMonth()+1).toString();
+				var dd  = date.getDate().toString();
+				 
+				// CONVERT mm AND dd INTO chars
+				var mmChars = mm.split('');
+				var ddChars = dd.split('');
+				 
+				// CONCAT THE STRINGS IN YYYY-MM-DD FORMAT
+				var dateString = (ddChars[1]?dd:"0"+ddChars[0]) + '/' +  (mmChars[1]?mm:"0"+mmChars[0]) + '/' +  yyyy
+
+                dados[i] = { 
+                	a : $scope.emails[i].email,
+                	b : dateString
+                };
             }
             
             return dados;//[{a: 1, b:2}, {a:3, b:4}];
