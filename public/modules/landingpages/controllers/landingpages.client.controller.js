@@ -33,7 +33,24 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 for( var i=0; i<data.length; i++ ){
 
                     if(data[i].top){
+                        
+                        if(data[i].precoPara.indexOf(',') > -1){
+                            
+                            var str = data[i].precoPara.split(',');
+
+                             console.log('str', str);
+
+                            data[i].precoParaInteiro = str[0];
+                            data[i].precoParaCentavos = ','+str[1];
+
+                        }else{
+                            data[i].precoParaInteiro = data[i].precoPara;
+                        }
+
+
                         itemsFiltrados.push(data[i]);
+
+
                     }
                 }
 
@@ -70,8 +87,25 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 for( var i=0; i<data.length; i++ ){
 
                     if(data[i].categoria === categoria){
+                        
+
+                        if(data[i].precoPara.indexOf(',') > -1){
+                            
+                            var str = data[i].precoPara.split(',');
+
+                             console.log('str', str);
+
+                            data[i].precoParaInteiro = str[0];
+                            data[i].precoParaCentavos = ','+str[1];
+
+                        }else{
+                            data[i].precoParaInteiro = data[i].precoPara;
+                        }
+
+
                         itemsFiltrados.push(data[i]);
                     }
+
                 }
 
                 $scope.categoria = categoria;
@@ -201,7 +235,7 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 
 		// Find a list of Landingpages
 		$scope.find = function() {
-            
+
 			$scope.landingpages = Landingpages.query(function(data){
 
 
@@ -219,12 +253,8 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                     }else{
                         data[i].precoParaInteiro = data[i].precoPara;
                     }
-
-                    
-                    
+              
                 }
-
-                console.log('landinpages', data);
 
             });
 
