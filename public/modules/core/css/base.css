@@ -1,5 +1,5 @@
 body  {
-    background-color:#f3f5f2; line-height:1.23; margin:0; font-family: 'Lato', sans-serif;  font-size: 13px; letter-spacing: -1px;}
+    background-color:#f3f5f2; line-height:1.23; margin:0; font-family: 'Lato', sans-serif;  font-size: 13px; letter-spacing: -0.5px;}
 img   {border:0}
 
 
@@ -7,8 +7,6 @@ img   {border:0}
 {
     border:1px solid #f00;
 }
-
-
 
 
 .logo{
@@ -53,6 +51,20 @@ a.menu {
 }
 a.menu:hover {
   color: #219acc;
+}
+
+
+a.menuSelected {
+  font-family: 'Droid Sans', sans-serif;   font-size: 14px;
+  display:block;
+  letter-spacing: -0.3px;
+  text-align:center;
+  padding-top:0;
+  color: #219acc;
+  text-decoration:none;
+  float:right;
+  padding: 23px 20px 23px 20px;
+
 }
 
 
@@ -205,6 +217,7 @@ a.menu:hover {
   border-color:#ededed;
   border-style:solid;
 }
+
 
 
 .thumb-over {

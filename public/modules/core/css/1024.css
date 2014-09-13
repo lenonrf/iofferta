@@ -8,4 +8,8 @@
 .contovertt {font-size:16px;}
 .contover { margin-top: 55px; height:128px; width: 185px;}
 
+.thumb-img img {
+    width: 186px;
+    height: 160px;
+}
 

@@ -16,30 +16,68 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
             
         }
         
-        $scope.selectCategoria = function(filtro){
+        $scope.selectTopItems = function(filtro){
+
+            angular.element( document.getElementById('eletronicos') ).addClass('menu');
+            angular.element( document.getElementById('eletronicos') ).css('color', '');
+
+            angular.element( document.getElementById('roupas') ).addClass('menu');
+            angular.element( document.getElementById('roupas') ).css('color', '');
             
-            console.log('filtro', filtro);
-            console.log('$scope.landingpages', $scope.landingpages);
+            angular.element( document.getElementById('top') ).css('color', '#219acc');
 
-            $scope.find();
+            $scope.landingpages = Landingpages.query(function(data){
 
-            var itemsFiltrados = [];  
+                var itemsFiltrados = [];  
 
-            for( var i=0; i<$scope.landingpages.length; i++){
+                for( var i=0; i<data.length; i++ ){
 
-                console.log('$scope.landingpages.i.categoria', $scope.landingpages.i.categoria);
-                if($scope.landingpages.i.categoria === filtro){
-                    itemsFiltrados.push($scope.landingpages.i);
+                    if(data[i].top){
+                        itemsFiltrados.push(data[i]);
+                    }
                 }
-            }
 
-            $scope.landingpages = itemsFiltrados;
+                $scope.filtro = filtro;
+                $scope.landingpages = itemsFiltrados;  
 
-            $scope.filtro = filtro;
-            $location.path('/');
+            });
+        };
 
-            
-            console.log('$scope.filtro', $scope.landingpages);
+
+
+
+
+        $scope.selectCategoria = function(categoria){
+
+            //document.getElementById('top').style.color = "#219acc;";
+            angular.element( document.getElementById('top') ).addClass('menu');
+            angular.element( document.getElementById('top') ).css('color', '');
+
+            angular.element( document.getElementById('eletronicos') ).addClass('menu');
+            angular.element( document.getElementById('eletronicos') ).css('color', '');
+
+            angular.element( document.getElementById('roupas') ).addClass('menu');
+            angular.element( document.getElementById('roupas') ).css('color', '');
+
+            angular.element( document.getElementById(categoria) ).css('color', '#219acc');
+
+            //console.log(angular.element( document.getElementById('top')).css('color', 'black'));
+
+            $scope.landingpages = Landingpages.query(function(data){
+
+                var itemsFiltrados = [];  
+
+                for( var i=0; i<data.length; i++ ){
+
+                    if(data[i].categoria === categoria){
+                        itemsFiltrados.push(data[i]);
+                    }
+                }
+
+                $scope.categoria = categoria;
+                $scope.landingpages = itemsFiltrados;  
+
+            });
         };
         
     
@@ -54,6 +92,12 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
             if(this.novidade){
                 novidadeArg =true;
             }
+
+            var topArg = false;
+
+            if(this.top){
+                topArg =true;
+            }
             
             // Create new Landingpage object
 			var landingpage = new Landingpages ({
@@ -66,7 +110,8 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 link: this.link,
                 imagem: this.imagem,
                 desconto: this.desconto,
-                novidade: novidadeArg
+                novidade: novidadeArg,
+                top: topArg
 			});
 
 
@@ -89,9 +134,13 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 $scope.imagem = '';
                 $scope.desconto = '';
                 $scope.novidade = '';
+                $scope.top = '';
 
                 
 			}, function(errorResponse) {
+
+                console.log('ERROR', errorResponse);
+
 				$scope.error = errorResponse.data.message;
 			});
 		};
@@ -152,7 +201,32 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 
 		// Find a list of Landingpages
 		$scope.find = function() {
-			$scope.landingpages = Landingpages.query();
+            
+			$scope.landingpages = Landingpages.query(function(data){
+
+
+                for( var i=0; i<data.length; i++ ){
+
+                    if(data[i].precoPara.indexOf(',') > -1){
+                        
+                        var str = data[i].precoPara.split(',');
+
+                         console.log('str', str);
+
+                        data[i].precoParaInteiro = str[0];
+                        data[i].precoParaCentavos = ','+str[1];
+
+                    }else{
+                        data[i].precoParaInteiro = data[i].precoPara;
+                    }
+
+                    
+                    
+                }
+
+                console.log('landinpages', data);
+
+            });
 
             //console.log('ITENS', $scope.landingpages);
 		};
