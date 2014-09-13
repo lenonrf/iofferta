@@ -54,6 +54,20 @@ a.menu:hover {
 }
 
 
+a.menuSelected {
+  font-family: 'Droid Sans', sans-serif;   font-size: 14px;
+  display:block;
+  letter-spacing: -0.3px;
+  text-align:center;
+  padding-top:0;
+  color: #219acc;
+  text-decoration:none;
+  float:right;
+  padding: 23px 20px 23px 20px;
+
+}
+
+
 
 
 /* FORM CADASTRO */
