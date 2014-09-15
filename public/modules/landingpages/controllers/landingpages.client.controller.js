@@ -237,8 +237,6 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                         
                         var str = data[i].precoPara.split(',');
 
-                         console.log('str', str);
-
                         data[i].precoParaInteiro = str[0];
                         data[i].precoParaCentavos = ','+str[1];
 
