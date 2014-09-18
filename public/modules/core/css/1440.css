@@ -2,22 +2,24 @@
 .blocomenu  {max-width: 1320px; height: 63px;}
 .segura     {max-width: 1250px;  margin-left:6%;}
 .subscribe  {width: 40%;}
-.thumb, .thumb-img, .thumb-over, .minhadiv {height: 250px;}
-.imgprd {width:200px;   border-radius: 5px;}
-.selo   {margin-bottom:14px;}
-.contovertt {font-size:18px;}
+.thumb, .thumb-img, .thumb-over {height: 250px; width: 202px;}
+.imgprd     {width: 200px;}
+.selo       {margin-bottom:14px;}
+.contovertt {font-size:17px;}
+.contover   {margin-top: 54px; width: 200px;}
+.tt {padding:5px 8px 0px 8px; font-size:20px;}
 
 /*
 .thumb, .thumb-img, .thumb-over, .minhadiv {
 	height: 285px; 
 	width: 202px;
-}*/
+}
 
 
 .thumb-img img {
     width: 200px;
-    height: 190px;
+
 }
 
 
-
+*/
