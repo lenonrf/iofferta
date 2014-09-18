@@ -94,7 +94,7 @@ angular.module('emails').controller('EmailsController', ['$scope', '$stateParams
 			email.$save(function(response) {
                 
                 $scope.emailCreated = true;
-				$location.path('home');
+				$location.path('sucesso');
 
 				// Clear form fields
 				$scope.email = '';
