@@ -3,7 +3,6 @@
 .sass-cache/
 npm-debug.log
 node_modules/
-public/lib
 public/images/
 app/tests/coverage/
 .bower-*/
