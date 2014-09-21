@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function(grunt) {
+
+
 	// Unified Watch Object
 	var watchFiles = {
 		serverViews: ['app/views/**/*.*'], 
@@ -13,6 +15,8 @@ module.exports = function(grunt) {
 
 	// Project Configuration
 	grunt.initConfig({
+		
+
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
 			serverViews: {
@@ -49,6 +53,8 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
+		
 		jshint: {
 			all: {
 				src: watchFiles.clientJS.concat(watchFiles.serverJS),
@@ -136,6 +142,7 @@ module.exports = function(grunt) {
 				configFile: 'karma.conf.js'
 			}
 		}
+
 	});
 
 	// Load NPM tasks 
@@ -167,4 +174,10 @@ module.exports = function(grunt) {
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+
+
 };
+
+
+
+

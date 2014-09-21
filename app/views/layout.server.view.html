@@ -76,6 +76,51 @@
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
 	{% endfor %} 
 
+	<!-- build:js js/vendor.js 
+	<script type="text/javascript" src="../../public/lib/ng-file-upload/angular-file-upload-shim.js"></script>
+	<script type="text/javascript" src="../../public/lib/angular/angular.js"></script>
+	<script type="text/javascript" src="../../public/lib/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="../../public/lib/angular-animate/angular-animate.js"></script>
+	<script type="text/javascript" src="../../public/lib/angular-ui-router/release/angular-ui-router.js"></script>
+	<script type="text/javascript" src="../../public/lib/angular-ui-utils/ui-utils.js"></script>
+	<script type="text/javascript" src="../../public/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script type="text/javascript" src="../../public/lib/angular-sanitize/angular-sanitize.js"></script>
+	<script type="text/javascript" src="../../public/lib/ng-csv/build/ng-csv.js"></script>
+	<script type="text/javascript" src="../../public/lib/ng-file-upload/angular-file-upload.js"></script>
+	<script type="text/javascript" src="../../public/lib/ui-utils/ui-utils.js"></script>
+	<!-- endbuild 
+
+	<!-- build:js js/app.js
+	<script type="text/javascript" src="../../config/config.js"></script>
+	<script type="text/javascript" src="../../public/application.js"></script>
+	<script type="text/javascript" src="../../public/modules/core/core.client.module.js"></script>
+	<script type="text/javascript" src="../../public/modules/emails/emails.client.module.js"></script>
+	<script type="text/javascript" src="../../public/modules/landingpages/landingpages.client.module.js"></script>
+	<script type="text/javascript" src="../../public/modules/users/users.client.module.js"></script>
+	<script type="text/javascript" src="../../public/modules/core/config/core.client.routes.js"></script>
+	<script type="text/javascript" src="../../public/modules/core/controllers/header.client.controller.js"></script>
+	<script type="text/javascript" src="../../public/modules/core/controllers/home.client.controller.js"></script>
+	<script type="text/javascript" src="../../public/modules/core/services/menus.client.service.js"></script>
+	<script type="text/javascript" src="../../public/modules/emails/config/emails.client.config.js"></script>
+	<script type="text/javascript" src="../../public/modules/emails/config/emails.client.routes.js"></script>
+	<script type="text/javascript" src="../../public/modules/emails/controllers/emails.client.controller.js"></script>
+	<script type="text/javascript" src="../../public/modules/emails/services/emails.client.service.js"></script>
+	<script type="text/javascript" src="../../public/modules/landingpages/config/landingpages.client.config.js"></script>
+	<script type="text/javascript" src="../../public/modules/landingpages/config/landingpages.client.routes.js"></script>
+	<script type="text/javascript" src="../../public/modules/landingpages/controllers/landingpages.client.controller.js"></script>
+	<script type="text/javascript" src="../../public/modules/landingpages/services/landingpages.client.service.js"></script>
+	<script type="text/javascript" src="../../public/modules/users/config/users.client.config.js"></script>
+	<script type="text/javascript" src="../../public/modules/users/config/users.client.routes.js"></script>
+	<script type="text/javascript" src="../../public/modules/users/controllers/authentication.client.controller.js"></script>
+	<script type="text/javascript" src="../../public/modules/users/controllers/password.client.controller.js"></script>
+	<script type="text/javascript" src="../../public/modules/users/controllers/settings.client.controller.js"></script>
+	<script type="text/javascript" src="../../public/modules/users/services/authentication.client.service.js"></script>
+	<script type="text/javascript" src="../../public/modules/users/services/users.client.service.js"></script>
+	<!-- endbuild --> 
+
+
+
+
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->
 	<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>

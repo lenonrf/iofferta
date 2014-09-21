@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/iofferta-dev',
+	db: 'mongodb://localhost/mean-dev',
 	
 	app: {
 		title: 'iOfferta - Encontramos os melhores descontos'
