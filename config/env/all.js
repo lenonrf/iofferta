@@ -8,7 +8,7 @@ module.exports = {
 		keywords: 'iofferta'
 	},
 	
-	port: process.env.PORT || 3000,
+	port: process.env.PORT || 8080,
 	templateEngine: 'swig',
 	sessionSecret: 'iofferta',
 	sessionCollection: 'sessions',
