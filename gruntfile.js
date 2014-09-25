@@ -13,7 +13,9 @@ module.exports = function(grunt) {
 
 	// Project Configuration
 	grunt.initConfig({
+		
 		pkg: grunt.file.readJSON('package.json'),
+		
 		watch: {
 			serverViews: {
 				files: watchFiles.serverViews,
@@ -57,6 +59,7 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		
 		csslint: {
 			options: {
 				csslintrc: '.csslintrc',
@@ -65,13 +68,15 @@ module.exports = function(grunt) {
 				src: watchFiles.clientCSS
 			}
 		},
+		
 		uglify: {
 			production: {
 				options: {
 					mangle: false
 				},
 				files: {
-					'public/dist/application.min.js': 'public/dist/application.js'
+					'public/dist/application.min.js': 'public/dist/application.js',
+					'public/dist/vendors.min.js': 'public/dist/vendors.js'
 				}
 			}
 		},
@@ -105,13 +110,20 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
+
+
+
         ngmin: {
             production: {
                 files: {
-                    'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
+                    'public/dist/application.js': '<%= applicationJavaScriptFiles %>',
+                    'public/dist/vendors.js': '<%= applicationJavaScriptVendors %>'
                 }
             }
         },
+
+
 		concurrent: {
 			default: ['nodemon', 'watch'],
 			debug: ['nodemon', 'watch', 'node-inspector'],
@@ -146,9 +158,13 @@ module.exports = function(grunt) {
 
 	// A Task for loading the configuration object
 	grunt.task.registerTask('loadConfig', 'Task that loads the config into a grunt option.', function() {
+		
 		var init = require('./config/init')();
 		var config = require('./config/config');
 
+		console.log('config.assets.lib.js', config.assets.lib.js);
+
+		grunt.config.set('applicationJavaScriptVendors', config.assets.lib.js);
 		grunt.config.set('applicationJavaScriptFiles', config.assets.js);
 		grunt.config.set('applicationCSSFiles', config.assets.css);
 	});
@@ -163,8 +179,11 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'csslint']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['lint', 'loadConfig', 'ngmin', 'uglify', 'cssmin']);
+	grunt.registerTask('build', ['lint', 'loadConfig', 'ngmin', 'uglify']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+
+
+
 };

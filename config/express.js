@@ -48,13 +48,7 @@ module.exports = function(db) {
 		next();
 	});
 
-	// Should be placed before express.static
-	app.use(compress({
-		filter: function(req, res) {
-			return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
-		},
-		level: 9
-	}));
+
 
 	// Showing stack errors
 	app.set('showStackError', true);
@@ -67,7 +61,9 @@ module.exports = function(db) {
 	app.set('views', './app/views');
 
 	// Environment dependent middleware
-	if (process.env.NODE_ENV === 'development') {
+	app.locals.cache = 'memory';
+
+	/*if (process.env.NODE_ENV === 'development') {
 		// Enable logger (morgan)
 		app.use(morgan('dev'));
 
@@ -75,7 +71,7 @@ module.exports = function(db) {
 		app.set('view cache', false);
 	} else if (process.env.NODE_ENV === 'production') {
 		app.locals.cache = 'memory';
-	}
+	}*/
 
 	// Request body parsing middleware should be above methodOverride
 	app.use(bodyParser.urlencoded({
@@ -115,8 +111,32 @@ module.exports = function(db) {
 	app.use(helmet.ienoopen());
 	app.disable('x-powered-by');
 
+
+
+	/*
+	 *  -------------------------------------------------------------------------------------------
+	 * Configurações de Cache
+	 */
+
+	var fiveMunites = 300000;
+
+	// New call to compress content
+	app.use(compress());
+
+	// Should be placed before express.static
+	/*app.use(compress({
+		filter: function(req, res) {
+			return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
+		},
+		level: 9
+	}));*/
+
 	// Setting the app router and static folder
-	app.use(express.static(path.resolve('./public')));
+	app.use(express.static(path.resolve('./public'), {maxAge: fiveMunites}));
+
+	// ---------------------------------------------------------------------------------------------
+
+
 
 	// Globbing routing files
 	config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {

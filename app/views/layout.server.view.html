@@ -74,7 +74,15 @@
 
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
-	{% endfor %} 
+	{% endfor %}
+
+<!--
+	<script type="text/javascript" src="dist/vendors.min.js"></script>
+	<script type="text/javascript" src="dist/application.min.js"></script>
+-->
+	 
+
+
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->
