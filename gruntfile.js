@@ -85,15 +85,18 @@ module.exports = function (grunt) {
 
 
         compress: {
-          main: {
-            options: {
-              mode: 'gzip'
-            },
-            expand: true,
-            cwd: '<%= globalConfigs.dist %>',
-            src: ['**/*'],
-            dest: '<%= globalConfigs.dist %>'
-          }
+            main: {
+                
+                options: {
+                    mode: 'gzip'
+                },
+
+                expand: true,
+                cwd: '<%= globalConfigs.dist %>',
+                src: ['**/*.min.js'],
+                dest: '<%= globalConfigs.dist %>/compress',
+                ext: '.gzip'
+            }
         },
 
 
