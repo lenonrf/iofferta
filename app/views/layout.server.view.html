@@ -32,9 +32,11 @@
 	<!-- Fav Icon -->
 <!--	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">-->
 
-	<!--Application CSS Files-->
+	<!--Application CSS Files
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
-	{% endfor %}
+	{% endfor %}-->
+
+	<link rel="stylesheet" href="dist/styles.min.css">
 
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
@@ -76,11 +78,24 @@
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
 	{% endfor %} -->
 
+	<script src="//cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/1.6.1/angular-file-upload-shim.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-sanitize.min.js"></script>
+
+
+	
+
 
 	<script type="text/javascript" src="dist/vendor.min.js"></script>
-	<script type="text/javascript" src="dist/app.min.js"></script>
 
-	 
+	<script type="text/javascript" src="dist/app.min.js"></script>
 
 
 	<!--Livereload script rendered 
