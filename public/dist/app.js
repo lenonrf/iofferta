@@ -126,8 +126,6 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
 		// Find a list of Landingpages
 		$scope.find = function() {
 
-			console.log($location.path());
-
 			switch($location.path()) {
 			    case '/roupas':
 			        $scope.selectCategoria('roupas');
@@ -173,8 +171,6 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
 
 
         $scope.selectTopItems = function(filtro){
-
-        	console.log('AKI');
 
             angular.element( document.getElementById('eletronicos') ).addClass('menu');
             angular.element( document.getElementById('eletronicos') ).css('color', '');
