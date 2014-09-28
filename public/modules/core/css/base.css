@@ -12,10 +12,10 @@ img   {border:0}
     color: #fff;
     height:39px;
     margin-left: 10px;
-    padding:17px 0px 0px 21px;
+    padding:17px 0 0 21px;
     font-size: 22px;
     font-weight: 400;
-    font-family: 'Lato', sans-serif;"
+    font-family: 'Lato', sans-serif;
 }
 
 .segblocomenu   {margin-top: 15px; margin-bottom: 15px;}
@@ -78,7 +78,7 @@ a.menu:hover {
 }
 
 .subscribe-input {
-  padding: 2px 0px 0px 16px;
+  padding: 2px 0 0 16px;
   width: 90%;
   height: 63px;
   font-family: 'Droid Sans', Tahoma, Verdana, sans-serif;
@@ -87,7 +87,7 @@ a.menu:hover {
   background-clip: padding-box;
   border: 1px solid;
   border-color: #303639 #303639 #303639;
-  border-radius: 0px;
+  border-radius: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(01, 0,1 01, 0.1), 1px 1px #f8f8f8;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px #f8f8f8;
 
@@ -105,7 +105,7 @@ a.menu:hover {
 .subscribe-submit {
   display: block;
   position: absolute;
-  top: 0px;
+  top: 0;
   right: -1px;
   padding-left: 15px;
   height: 63px;
@@ -113,7 +113,7 @@ a.menu:hover {
   background: #1d89b6;
   border: 1px solid;
   border-color: #1d89b6;
-  border-radius: 0 60px 60px 0; */
+  border-radius: 0 60px 60px 0; 
   cursor: hand;
  /*font: 0/0 serif;*/
   text-shadow: none;
@@ -153,7 +153,7 @@ a.menu:hover {
 
 #topo2	{
   width:100%;
-  margin:25px 0px 30px 0px;
+  margin:25px 0 30px 0;
   padding-top: 20px;
   padding-bottom: 20px;
   background-color:#ededed;
@@ -164,8 +164,8 @@ a.menu:hover {
 
 #topo3	{
   width:100%;
-  margin:0px 0px 50px 0px;
-  padding-top:0px;
+  margin:0 0 50px 0;
+  padding-top:0;
   padding-bottom: 20px;
   letter-spacing: -0.3px;
 
@@ -197,7 +197,7 @@ a.menu:hover {
   border-style:solid;
 }
 
-.imgprd {border-radius: 5px 5px 0px 0px;}
+.imgprd {border-radius: 5px 5px 0 0;}
 
 .thumb-over {
   position:absolute;
@@ -205,7 +205,7 @@ a.menu:hover {
   bottom:1;
   left:-1px;
   right:-1px;
-  padding:.0em 0em;
+  padding:.0 0;
   color:white;
   text-shadow:0 1px rgba(0,0,0,0.1);
   /*background:rgba(204,204,204,0.95);*/
@@ -240,19 +240,19 @@ a.menu:hover {
   text-align:center;
   padding-top:6px;
   padding-left:1px;
-  padding-bottom:0px;
+  padding-bottom:0;
   font-size:18px;
 }
 
 
 /*
 .tt{
-  padding:5px 8px 0px 8px;
+  padding:5px 8px 0 8px;
   font-size:20px;
 }
 */
 .tt2 {
-  padding:3px 8px 0px 8px;
+  padding:3px 8px 0 8px;
   font-size:26px;
   letter-spacing:-0.5px;
 }
@@ -279,7 +279,7 @@ a.menu:hover {
 }
 
 .contovertt{
-  padding:8px 8px 0px 8px;
+  padding:8px 8px 0 8px;
   letter-spacing:0.5px;
   color: #fff;
 }
@@ -290,7 +290,7 @@ a.menu:hover {
   font-size:10px;
 }
 .contoverprice{
-  padding:2px 8px 0px 8px;
+  padding:2px 8px 0 8px;
   font-size:26px;
   color: #fff;
 }

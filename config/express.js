@@ -18,15 +18,14 @@ var express = require('express'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path');
+	path = require('path'),
+    cachingMiddleware = require('express-view-cache'),
+    memjs = require('memjs');
 
 module.exports = function(db) {
 	
 	// Initialize express app
 	var app = express();
-
-
-
 
 
 	// Globbing model files
@@ -48,13 +47,7 @@ module.exports = function(db) {
 		next();
 	});
 
-	// Should be placed before express.static
-	app.use(compress({
-		filter: function(req, res) {
-			return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
-		},
-		level: 9
-	}));
+
 
 	// Showing stack errors
 	app.set('showStackError', true);
@@ -67,7 +60,9 @@ module.exports = function(db) {
 	app.set('views', './app/views');
 
 	// Environment dependent middleware
-	if (process.env.NODE_ENV === 'development') {
+	app.locals.cache = 'memory';
+
+	/*if (process.env.NODE_ENV === 'development') {
 		// Enable logger (morgan)
 		app.use(morgan('dev'));
 
@@ -75,7 +70,7 @@ module.exports = function(db) {
 		app.set('view cache', false);
 	} else if (process.env.NODE_ENV === 'production') {
 		app.locals.cache = 'memory';
-	}
+	}*/
 
 	// Request body parsing middleware should be above methodOverride
 	app.use(bodyParser.urlencoded({
@@ -115,8 +110,29 @@ module.exports = function(db) {
 	app.use(helmet.ienoopen());
 	app.disable('x-powered-by');
 
+
+
+	/*
+	 *  -------------------------------------------------------------------------------------------
+	 * Configurações de Cache
+	 */
+
+	var fiveMinutes = 300000;
+	var twentyMunites = 1200000;
+
+	// New call to compress content
+	app.use(compress());
+
+	// Usa cache para o servico de landingpage
+	//app.use(cachingMiddleware(1000, {'type':'application/json', 'driver':'memjs'} ));
+	app.use('admin/landingpages', cachingMiddleware(twentyMunites, {'type':'application/json', 'driver':'memjs'}));
+
 	// Setting the app router and static folder
-	app.use(express.static(path.resolve('./public')));
+	app.use(express.static(path.resolve('./public'), {maxAge: fiveMinutes}));
+
+	// ---------------------------------------------------------------------------------------------
+
+
 
 	// Globbing routing files
 	config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {

@@ -1,16 +1,20 @@
 'use strict';
 
 module.exports = {
+	
 	app: {
 		title: 'iOfferta',
 		description: 'Encontramos os melhores descontos!',
-		keywords: 'ioffertas'
+		keywords: 'iofferta'
 	},
-	port: process.env.PORT || 3000,
+	
+	port: process.env.PORT || 8080,
 	templateEngine: 'swig',
-	sessionSecret: 'MEAN',
+	sessionSecret: 'iofferta',
 	sessionCollection: 'sessions',
+	
 	assets: {
+	
 		lib: {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
