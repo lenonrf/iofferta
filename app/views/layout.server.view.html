@@ -29,12 +29,6 @@
 	<meta name="twitter:url" content="{{url}}">
 	<meta name="twitter:image" content="/img/brand/logo.png">
 
-	<!-- Fav Icon -->
-<!--	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">-->
-
-	<!--Application CSS Files
-	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
-	{% endfor %}-->
 
 	<link rel="stylesheet" href="dist/styles.min.css">
 
@@ -74,11 +68,7 @@
 		var user = {{ user | json | safe }};
 	</script>
 
-	<!--Application JavaScript Files
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
-	{% endfor %} -->
 
-<!-- -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/1.6.1/angular-file-upload-shim.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
@@ -95,13 +85,6 @@
 	<script type="text/javascript" src="dist/vendor.min.js"></script>
 	<script type="text/javascript" src="dist/app.min.js"></script>
 
-
-	<!--Livereload script rendered 
-	{% if process.env.NODE_ENV === 'development' %}
-	<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
-	-->
-
-	{% endif %}
 </body>
 
 </html>
