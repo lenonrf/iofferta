@@ -41,6 +41,30 @@ module.exports = function(db) {
 	app.locals.jsFiles = config.getJavaScriptAssets();
 	app.locals.cssFiles = config.getCSSAssets();
 
+
+
+	/*
+	 *  -------------------------------------------------------------------------------------------
+	 * Configurações de Cache
+	 */
+
+	var fiveMinutes = 300000;
+	var twentyMunites = 1200000;
+
+	// New call to compress content
+	app.use(compress());
+
+	// Usa cache para o servico de landingpage
+	app.use(cachingMiddleware(1000, {'type':'application/json', 'driver':'memjs'} ));
+	app.use('admin/landingpages', cachingMiddleware(twentyMunites, {'type':'application/json'}));
+
+	// Setting the app router and static folder
+	app.use(express.static(path.resolve('./public'), {maxAge: fiveMinutes}));
+
+	// ---------------------------------------------------------------------------------------------
+
+	
+
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {
 		res.locals.url = req.protocol + '://' + req.headers.host + req.url;
@@ -112,25 +136,7 @@ module.exports = function(db) {
 
 
 
-	/*
-	 *  -------------------------------------------------------------------------------------------
-	 * Configurações de Cache
-	 */
 
-	var fiveMinutes = 300000;
-	var twentyMunites = 1200000;
-
-	// New call to compress content
-	app.use(compress());
-
-	// Usa cache para o servico de landingpage
-	app.use(cachingMiddleware(1000, {'type':'application/json', 'driver':'memjs'} ));
-	app.use('admin/landingpages', cachingMiddleware(twentyMunites, {'type':'application/json'}));
-
-	// Setting the app router and static folder
-	app.use(express.static(path.resolve('./public'), {maxAge: fiveMinutes}));
-
-	// ---------------------------------------------------------------------------------------------
 
 
 
