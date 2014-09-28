@@ -18,15 +18,14 @@ var express = require('express'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path');
+	path = require('path'),
+    cachingMiddleware = require('express-view-cache'),
+    memjs = require('memjs');
 
 module.exports = function(db) {
 	
 	// Initialize express app
 	var app = express();
-
-
-
 
 
 	// Globbing model files
@@ -118,21 +117,18 @@ module.exports = function(db) {
 	 * Configurações de Cache
 	 */
 
-	var fiveMunites = 300000;
+	var fiveMinutes = 300000;
+	var twentyMunites = 1200000;
 
 	// New call to compress content
 	app.use(compress());
 
-	// Should be placed before express.static
-	/*app.use(compress({
-		filter: function(req, res) {
-			return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
-		},
-		level: 9
-	}));*/
+	// Usa cache para o servico de landingpage
+	app.use(cachingMiddleware(1000, {'type':'application/json', 'driver':'memjs'} ));
+	app.use('/admin/landingpages', cachingMiddleware(twentyMunites, {'type':'application/json'}));
 
 	// Setting the app router and static folder
-	app.use(express.static(path.resolve('./public'), {maxAge: fiveMunites}));
+	app.use(express.static(path.resolve('./public'), {maxAge: fiveMinutes}));
 
 	// ---------------------------------------------------------------------------------------------
 
