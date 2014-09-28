@@ -125,7 +125,7 @@ module.exports = function(db) {
 
 	// Usa cache para o servico de landingpage
 	app.use(cachingMiddleware(1000, {'type':'application/json', 'driver':'memjs'} ));
-	app.use('/admin/landingpages', cachingMiddleware(twentyMunites, {'type':'application/json'}));
+	app.use('admin/landingpages', cachingMiddleware(twentyMunites, {'type':'application/json'}));
 
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public'), {maxAge: fiveMinutes}));
