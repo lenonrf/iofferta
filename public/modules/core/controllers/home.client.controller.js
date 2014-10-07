@@ -28,7 +28,7 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
     
             data.link += separador+'utm_source='+utm_source+'&utm_medium='+utm_medium+'&utm_term='+utm_term+'&utm_content='+utm_content+'&utm_campaign='+utm_campaign;
 
-            console.log('data.link', encodeURI(data.link));
+            //console.log('data.link', encodeURI(data.link));
 
             return encodeURI(data.link);
         };
