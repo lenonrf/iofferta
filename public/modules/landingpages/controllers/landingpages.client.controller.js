@@ -6,6 +6,8 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 		
         $scope.authentication = Authentication;
         $scope.loadingImage = 0;
+
+
         
         
         if($scope.authentication.user === ''){
@@ -247,6 +249,8 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 }
 
             });
+
+
 
             //console.log('ITENS', $scope.landingpages);
 		};

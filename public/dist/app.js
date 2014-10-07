@@ -121,6 +121,57 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 	
+        
+
+        /**
+         * Formata a url da imagem para se adequar ao google analytics
+         */
+        $scope.getImageURL = function(data) {
+
+            var params = $location.$$url.split('&');
+            var separador = '?';
+
+            var utm_source = 'Iofferta'
+            var utm_medium = 'Vitrine'
+            var utm_term = data.nome
+            var utm_content = data.nome
+            var utm_campaign =  $scope.getCampaing(params);
+
+            if(data.link.indexOf('?') > -1){
+                separador = '&';
+            }
+    
+            data.link += separador+'utm_source='+utm_source+'&utm_medium='+utm_medium+'&utm_term='+utm_term+'&utm_content='+utm_content+'&utm_campaign='+utm_campaign;
+
+            console.log('data.link', encodeURI(data.link));
+
+            return encodeURI(data.link);
+        };
+        
+
+
+        /**
+         * Vascula a URL a procura do parametro de camapanha
+         */
+        $scope.getCampaing = function(params) {
+            
+            var utm_campaign = '';
+
+            for( var i=0; i<params.length; i++ ){
+
+                if(params[i].indexOf('utm_campaign') > -1){
+                
+                    var campaign = params[i].split('=');
+                    utm_campaign = campaign[1];
+                }
+            }
+
+            return 'Iofferta_'+utm_campaign;
+
+        };
+
+
+
 
 
 		// Find a list of Landingpages
@@ -137,7 +188,7 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
 			        $scope.selectTopItems('top');
 			        break;
 			    default:
-			        $scope.findItems();
+			        $scope.selectTopItems();
 			}
 		};
 
@@ -149,6 +200,8 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
 
 
                 for( var i=0; i<data.length; i++ ){
+
+                    data[i].link = $scope.getImageURL(data[i]);
 
                     if(data[i].precoPara.indexOf(',') > -1){
                         
@@ -172,6 +225,8 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
 
         $scope.selectTopItems = function(filtro){
 
+            
+
             angular.element( document.getElementById('eletronicos') ).addClass('menu');
             angular.element( document.getElementById('eletronicos') ).css('color', '');
 
@@ -183,6 +238,8 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
             $scope.landingpages = Landingpages.query(function(data){
 
                 var itemsFiltrados = [];  
+
+                
 
                 for( var i=0; i<data.length; i++ ){
 
@@ -199,7 +256,7 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
                             data[i].precoParaInteiro = data[i].precoPara;
                         }
 
-
+                        data[i].link = $scope.getImageURL(data[i]);
                         itemsFiltrados.push(data[i]);
 
 
@@ -252,7 +309,7 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
                             data[i].precoParaInteiro = data[i].precoPara;
                         }
 
-
+                        data[i].link = $scope.getImageURL(data[i]);
                         itemsFiltrados.push(data[i]);
                     }
 
@@ -263,16 +320,6 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
 
             });
         };
-
-
-
-
-
-
-
-
-
-
 	}
 
 ]);
@@ -690,6 +737,8 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
 		
         $scope.authentication = Authentication;
         $scope.loadingImage = 0;
+
+
         
         
         if($scope.authentication.user === ''){
@@ -931,6 +980,8 @@ angular.module('landingpages').controller('LandingpagesController', ['$scope', '
                 }
 
             });
+
+
 
             //console.log('ITENS', $scope.landingpages);
 		};
