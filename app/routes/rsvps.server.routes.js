@@ -16,5 +16,5 @@ module.exports = function(app) {
 		.delete(users.requiresLogin, rsvps.hasAuthorization, rsvps.delete);
 
 	// Finish by binding the Email middleware
-	app.param('rsvpId', rsvps.emailByID);
+	app.param('rsvpId', rsvps.rsvpByID);
 };
