@@ -41,6 +41,15 @@ module.exports = function(db) {
 	app.locals.jsFiles = config.getJavaScriptAssets();
 	app.locals.cssFiles = config.getCSSAssets();
 
+	app.all('*', function(req, res, next){
+
+		res.header('Access-Control-Allow-Origin','*');
+		res.header('Access-Control-Allow-Headers','Origin, X-Requested-With, Content-Type, Accept');
+		next();
+	});
+
+
+
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {
 		res.locals.url = req.protocol + '://' + req.headers.host + req.url;
