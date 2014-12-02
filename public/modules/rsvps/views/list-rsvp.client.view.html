@@ -1,0 +1,75 @@
+<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+<section class="container">
+
+<section data-ng-controller="RsvpsController" data-ng-init="find()">
+
+    <div class="row">&nbsp;</div>
+    <div class="row">&nbsp;</div>
+
+
+    <div class="page-header">
+        <h1>Download RSVP</h1>
+    </div>
+
+
+
+    <div class="jumbotron" ng-show="{{true}}">
+         <p><strong>Total dos convidados:</strong> {{rsvps.length}}</p>
+         <p><strong>Arquivo:</strong> rsvp.csv</p>
+    </div>
+
+<!--
+    <div class="jumbotron" ng-show="{{jumboMes}}">
+
+
+          <select class="form-control">
+              <option value="volvo">Atual - Setembro</option>
+              <option value="saab">Agosto</option>
+              <option value="mercedes">Julho</option>
+              <option value="audi">Junho</option>
+            </select>
+
+    </div>
+
+     <div class="jumbotron" ng-show="{{jumboPeriodo}}">
+        <p><input type="radio" name="typeSearch" value="all" checked > Todos os Emails</p>
+        <p><input type="radio" name="typeSearch" value="period" disabled> Por Periodo</p>
+    </div>
+
+
+-->
+
+
+    <button type="button" ng-csv="getRsvps()" field-separator=";" csv-header="['rsvp', 'data']" filename="rsvp.csv" class="btn btn-success btn-lg">Download CSV</button>
+
+
+
+
+
+
+
+<!--
+
+    <div class="list-group">
+        <a data-ng-repeat="email in emails" data-ng-href="#!/emails/{{email._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Criado em
+				<span data-ng-bind="email.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="email.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="email.email"></h4>
+        </a>
+    </div>
+
+    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+
+    <div class="alert alert-warning text-center" data-ng-hide="!emails.$resolved || emails.length">
+    	N&atilde;o existem emails cadastrados <a href="/#!/emails/create"> cadastre</a>
+    </div>
+-->
+
+    <div class="row">&nbsp;</div>
+    <div class="row">&nbsp;</div>
+</section>
+    </section>

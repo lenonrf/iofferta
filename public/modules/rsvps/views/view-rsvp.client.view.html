@@ -1,0 +1,31 @@
+
+
+<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+<section class="container">
+
+    <section data-ng-controller="RsvpsController" data-ng-init="findOne()">
+
+        <div class="row">&nbsp;</div>
+    <div class="row">&nbsp;</div>
+
+	<div class="page-header">
+		<h1 data-ng-bind="rsvp.nome"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == rsvp.user._id">
+		<a class="btn btn-primary" href="/#!/rsvps/{{rsvp._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Criado em
+			<span data-ng-bind="rsvp.created | date:'mediumDate'"></span>
+			por
+			<span data-ng-bind="rsvp.user.displayName"></span>
+		</em>
+	</small>
+</section>
+    </section>
