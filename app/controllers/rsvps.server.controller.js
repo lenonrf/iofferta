@@ -75,13 +75,13 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
 
 
-    Rsvp.find().sort('-created').populate('user', 'displayName').exec(function(err, emails) {
+    Rsvp.find().sort('-created').populate('user', 'displayName').exec(function(err, rsvps) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(rsvp);
+			res.jsonp(rsvps);
 		}
 	});
 };
@@ -94,13 +94,13 @@ exports.listLimit = function(req, res, limitArg) {
 
     var limit = (!limitArg) ? limitArg : 0;
 
-    Rsvp.find().sort('-created').populate('user', 'displayName').limit(limitArg).exec(function(err, rsvp) {
+    Rsvp.find().sort('-created').populate('user', 'displayName').limit(limitArg).exec(function(err, rsvps) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(rsvp);
+			res.jsonp(rsvps);
 		}
 	});
 };
