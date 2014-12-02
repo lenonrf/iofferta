@@ -4,9 +4,9 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     var globalConfigs = {};
-    
+
     var watchFiles = {
-        serverViews: ['app/views/**/*.*'], 
+        serverViews: ['app/views/**/*.*'],
         serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
         clientViews: ['public/modules/**/views/**/*.html'],
         clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
 
         globalConfigs : {
-            
+
             src : 'public',
             dist : '<%= globalConfigs.src %>/dist'
 
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
             combine: {
                 files: {
                     '<%= globalConfigs.src %>/dist/styles.min.css': [
-                        '<%= globalConfigs.src %>/lib/bootstrap/dist/css/bootstrap.css', 
+                        '<%= globalConfigs.src %>/lib/bootstrap/dist/css/bootstrap.css',
                         '<%= globalConfigs.src %>/lib/bootstrap/dist/css/bootstrap-theme.css',
                         '<%= globalConfigs.src %>/modules/core/css/1024.css',
                         '<%= globalConfigs.src %>/modules/core/css/1280.css',
@@ -86,7 +86,7 @@ module.exports = function (grunt) {
 
         compress: {
             main: {
-                
+
                 options: {
                     mode: 'gzip'
                 },
@@ -102,11 +102,11 @@ module.exports = function (grunt) {
 
 
         concat: {
-            
+
             app: {
                 src: [
-                    '<%= globalConfigs.src %>/config.js', 
-                    '<%= globalConfigs.src %>/application.js', 
+                    '<%= globalConfigs.src %>/config.js',
+                    '<%= globalConfigs.src %>/application.js',
                     '<%= globalConfigs.src %>/modules/core/core.client.module.js',
                     '<%= globalConfigs.src %>/modules/emails/emails.client.module.js',
                     '<%= globalConfigs.src %>/modules/landingpages/landingpages.client.module.js',
@@ -129,7 +129,12 @@ module.exports = function (grunt) {
                     '<%= globalConfigs.src %>/modules/users/controllers/password.client.controller.js',
                     '<%= globalConfigs.src %>/modules/users/controllers/settings.client.controller.js',
                     '<%= globalConfigs.src %>/modules/users/services/authentication.client.service.js',
-                    '<%= globalConfigs.src %>/modules/users/services/users.client.service.js'
+                    '<%= globalConfigs.src %>/modules/users/services/users.client.service.js',
+
+                    '<%= globalConfigs.src %>/modules/rsvps/config/rsvps.client.config.js',
+                    '<%= globalConfigs.src %>/modules/rsvps/config/rsvps.client.routes.js',
+                    '<%= globalConfigs.src %>/modules/rsvps/controllers/rsvps.client.controller.js',
+                    '<%= globalConfigs.src %>/modules/rsvps/services/rsvps.client.service.js'
                 ],
                 dest: '<%= globalConfigs.dist %>/app.js'
             },
@@ -226,10 +231,10 @@ module.exports = function (grunt) {
 
     // A Task for loading the configuration object
     grunt.registerTask('loadConfig', 'Task that loads the config into a grunt option.', function() {
-        
+
         var init = require('./config/init')();
         var config = require('./config/config');
-        
+
         grunt.config.set('applicationJavaScriptVendors', config.assets.lib.js);
         grunt.config.set('applicationJavaScriptFiles', config.assets.js);
         grunt.config.set('applicationCSSFiles', config.assets.css);
