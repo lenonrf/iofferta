@@ -33,7 +33,7 @@ var RsvpSchema = new Schema({
 		type: String,
 		default: '',
 		required: 'Insira o mensagem',
-		trim: true
+		trim: false
 	}
 });
 
