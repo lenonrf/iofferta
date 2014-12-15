@@ -12,8 +12,8 @@ module.exports = function(app) {
 
 	app.route('/rsvps/:rsvpId')
 		.get(rsvps.read)
-		.put(users.requiresLogin, rsvps.hasAuthorization, rsvps.update)
-		.delete(users.requiresLogin, rsvps.hasAuthorization, rsvps.delete);
+		.put(rsvps.update)
+		.delete(rsvps.delete);
 
 	// Finish by binding the Email middleware
 	app.param('rsvpId', rsvps.rsvpByID);
