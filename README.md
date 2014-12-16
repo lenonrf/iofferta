@@ -1,6 +1,5 @@
-iofferta.com/
-
-=====================
+iofferta.com
+========
 
 Site que concentra ofertas de diferentes ecommerces.
 
