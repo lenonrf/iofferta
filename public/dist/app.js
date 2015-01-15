@@ -1377,3 +1377,207 @@ angular.module('users').factory('Users', ['$resource',
 		});
 	}
 ]);
+'use strict';
+
+// Configuring the Articles module
+angular.module('rsvps').run(['Menus',
+	function(Menus) {
+		// Set top bar menu items
+		//Menus.addMenuItem('topbar', 'Emails', 'emails', 'dropdown', '/emails(/create)?');
+		//Menus.addSubMenuItem('topbar', 'emails', 'download', 'emails');
+//		Menus.addSubMenuItem('topbar', 'emails', 'novo email', 'emails/create');
+	}
+]);
+'use strict';
+
+//Setting up route
+angular.module('rsvps').config(['$stateProvider',
+	function($stateProvider) {
+		// Emails state routing
+		$stateProvider.
+		state('listRsvps', {
+			url: '/rsvps',
+			templateUrl: 'modules/rsvps/views/list-rsvps.client.view.html'
+		}).
+		state('createRsvp', {
+			url: '/rsvps/create',
+			templateUrl: 'modules/rsvps/views/create-rsvp.client.view.html'
+		}).
+		state('viewRsvp', {
+			url: '/rsvps/:rsvpId',
+			templateUrl: 'modules/rsvps/views/view-rsvp.client.view.html'
+		}).
+		state('editRsvp', {
+			url: '/rsvps/:rsvpId/edit',
+			templateUrl: 'modules/rsvps/views/edit-rsvp.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Rsvps controller
+angular.module('rsvps').controller('RsvpsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rsvps',
+	function($scope, $stateParams, $location, Authentication, Rsvps ) {
+		$scope.authentication = Authentication;
+
+            $scope.totalItems = 64;
+          $scope.currentPage = 4;
+
+          $scope.setPage = function (pageNo) {
+            $scope.currentPage = pageNo;
+          };
+
+          $scope.pageChanged = function() {
+            console.log('Page changed to: ' + $scope.currentPage);
+          };
+
+          $scope.maxSize = 5;
+          $scope.bigTotalItems = 175;
+          $scope.bigCurrentPage = 1;
+
+
+        // Create new Email
+		$scope.create = function() {
+
+            // Create new Email object
+			var rsvp = new Rsvps ({
+				rsvp: this.rsvp
+			});
+
+			// Redirect after save
+			rsvp.$save(function(response) {
+
+                $location.path('rsvps/' + response._id);
+
+
+
+				// Clear form fields
+				$scope.rsvp = '';
+
+
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+
+//        $scope.getRsvps = [{a: 1, b:2}, {a:3, b:4}];
+
+        $scope.getRsvps = function(){
+
+            console.log($scope.rsvps);
+            //return $scope.rsvps;
+
+            var dados = [];
+
+
+            for(var i in $scope.rsvps){
+
+            	var date = new Date($scope.rsvps[i].created);
+                // GET YYYY, MM AND DD FROM THE DATE OBJECT
+				var yyyy = date.getFullYear().toString();
+				var mm = (date.getMonth()+1).toString();
+				var dd  = date.getDate().toString();
+
+				// CONVERT mm AND dd INTO chars
+				var mmChars = mm.split('');
+				var ddChars = dd.split('');
+
+				// CONCAT THE STRINGS IN YYYY-MM-DD FORMAT
+				var dateString = (ddChars[1]?dd:'0'+ddChars[0]) + '/' +  (mmChars[1]?mm:'0'+mmChars[0]) + '/' +  yyyy;
+
+                dados[i] = {
+                	a : $scope.rsvps[i].rsvp,
+                	b : dateString
+                };
+            }
+
+            return dados;//[{a: 1, b:2}, {a:3, b:4}];
+        };
+
+
+
+
+        // Create new Email
+		$scope.createEmailOnHome = function() {
+			// Create new Email object
+			var rsvp = new Rsvps ({
+				rsvp: this.rsvp
+			});
+
+			// Redirect after save
+			rsvp.$save(function(response) {
+
+                $scope.rsvpCreated = true;
+				$location.path('sucesso');
+
+				// Clear form fields
+				$scope.rsvp = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Email
+		$scope.remove = function( rsvp ) {
+			if ( rsvp ) { rsvp.$remove();
+
+				for (var i in $scope.rsvps ) {
+					if ($scope.rsvps [i] === rsvp ) {
+						$scope.rsvps.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.rsvp.$remove(function() {
+					$location.path('rsvps');
+				});
+			}
+		};
+
+		// Update existing Email
+		$scope.update = function() {
+			var rsvp = $scope.rsvp ;
+
+			rsvp.$update(function() {
+				$location.path('rsvps/' + rsvp._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Rsvps
+		$scope.find = function() {
+			$scope.rsvps = Rsvps.query();
+		};
+
+
+        // Find a list of Rsvps
+		$scope.findLimit = function(limitArg) {
+
+			$scope.rsvps = Rsvps.query();
+		};
+
+
+		// Find existing Email
+		$scope.findOne = function() {
+			$scope.rsvp = Rsvps.get({
+				rsvpId: $stateParams.rsvpId
+			});
+		};
+	}
+]);
+'use strict';
+
+//Rsvps service used to communicate Rsvps REST endpoints
+angular.module('rsvps').factory('Rsvps', ['$resource',
+	function($resource) {
+		return $resource('rsvps/:rsvpId',
+            {
+                rsvpId: '@_id'
+		    }, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
